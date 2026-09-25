@@ -44,6 +44,8 @@ describe("content", () => {
     const urls = [
       ...Object.values(collections).flatMap((list) => urlsIn(list)),
       ...site.socials.map((s) => s.url).filter((u) => !u.startsWith("mailto:")),
+      ...urlsIn(content.honors),
+      ...(site.calendarUrl ? [site.calendarUrl] : []),
     ];
     for (const url of urls) expect(url, url).toMatch(/^https:\/\//);
   });

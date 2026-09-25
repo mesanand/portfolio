@@ -36,7 +36,7 @@ export default function RoleCell({ role, index }: RoleCellProps) {
       </p>
       {role.summary && <p className="cell__desc">{role.summary}</p>}
       {role.metrics && role.metrics.length > 0 && (
-        <ul className="chips cell__foot" role="list" aria-label="Highlights">
+        <ul className="chips cell__metrics" role="list" aria-label="Highlights">
           {role.metrics.slice(0, 3).map((m) => (
             <li key={m}>
               <Chip variant="accent">{m}</Chip>

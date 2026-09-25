@@ -448,6 +448,10 @@ main > .section:last-child {
   gap: 0 var(--space-6);
 }
 
+.cell__metrics {
+  margin-top: auto;
+}
+
 .cell__date {
   display: flex;
   align-items: center;
@@ -547,6 +551,10 @@ main > .section:last-child {
 }
 
 @media (max-width: 639.98px) {
+  .role-line {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .role-line__summary {
     display: none;
   }
