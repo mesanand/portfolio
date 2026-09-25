@@ -5,7 +5,7 @@ test("/work renders every entry, grouped, with a pulse dot on current roles", as
   await expect(page.getByRole("heading", { level: 2, name: "NOW" })).toBeVisible();
   await expect(page.getByRole("heading", { level: 2, name: "PREVIOUSLY" })).toBeVisible();
   const rows = page.locator(".xp-row");
-  await expect(rows).toHaveCount(4);
+  await expect(rows).toHaveCount(5);
   const ga = rows.filter({ hasText: "General Atlantic" });
   await expect(ga.locator(".pulse-dot")).toHaveCount(1);
   await expect(ga.locator(".xp-row__date")).toContainText("JUL 2026 to PRESENT");

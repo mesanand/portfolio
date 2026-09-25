@@ -1,9 +1,10 @@
-import { Briefcase, Calendar, GitBranch, Mail, type LucideIcon } from "lucide-react";
+import { AtSign, Briefcase, Calendar, GitBranch, Mail, type LucideIcon } from "lucide-react";
 import type { SocialIcon } from "@/content/site";
 
 const ICONS: Record<SocialIcon, LucideIcon> = {
   github: GitBranch,
   linkedin: Briefcase,
+  x: AtSign,
   mail: Mail,
   calendar: Calendar,
 };
