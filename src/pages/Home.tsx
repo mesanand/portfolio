@@ -3,11 +3,13 @@ import BracketButton from "@/components/BracketButton";
 import ExperienceRow from "@/components/ExperienceRow";
 import Hero from "@/components/Hero";
 import LinkCard from "@/components/LinkCard";
+import ProjectCell from "@/components/ProjectCell";
 import Section, { SectionHead } from "@/components/Section";
-import { experience } from "@/content";
+import { experience, projects } from "@/content";
 import { site } from "@/content/site";
 
 const featuredWork = experience.filter((e) => e.featured);
+const featuredProjects = projects.filter((p) => p.featured);
 
 export default function Home() {
   return (
@@ -42,6 +44,14 @@ export default function Home() {
 
       <Section id="projects" labelledBy="home-projects">
         <SectionHead eyebrow="// PROJECTS" title="Projects" id="home-projects" />
+        <div className="cells">
+          {featuredProjects.map((p, i) => (
+            <ProjectCell key={p.id} project={p} index={String(i + 1).padStart(2, "0")} />
+          ))}
+        </div>
+        <div className="section-foot">
+          <BracketButton href="/projects">All projects</BracketButton>
+        </div>
       </Section>
 
       <Section id="elsewhere" labelledBy="home-elsewhere">

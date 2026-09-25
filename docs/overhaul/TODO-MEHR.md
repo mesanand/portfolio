@@ -17,3 +17,9 @@ Each item points at the file where the answer goes. `grep -rn "TODO(mehr)" src` 
 - Brewster and General Atlantic keep their homepage links from `07-ANSWERS.md`. Dana-Farber has no link because 07 lists none.
 - On `/work`, current roles are ordered by start date, newest first, as the spec says. That puts the NYC Network Connector (Aug 2026) above General Atlantic (Jul 2026). Home's "Selected work" only shows featured roles, so General Atlantic still leads there. To put General Atlantic first on `/work`, change its start date or ask for a pinned sort.
 - The X link card uses a generic "@" icon. lucide-react 1.x ships no brand logos, and its `X` icon is a close button.
+
+## Projects (`src/content/projects.ts`)
+
+- [ ] **Campus Nutrition Assistant repo.** The repo in 07 (`github.com/Sadfahlsdj/wafflehacks_june_2024`) returns 404, and neither account has a matching public repo. Is it private or renamed? The cell links to Devpost only until a public `repo` URL is added.
+- [ ] **Cosint.** The year (2024) is a best guess. If you don't recognize the project after watching the video, cut it.
+- [ ] **Pistachio.** Cut, because no YouTube URL was in 07 before prompt 6. To bring it back, add the video URL and re-add the entry from 07 section 3.

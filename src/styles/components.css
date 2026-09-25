@@ -376,6 +376,113 @@ main > .section:last-child {
 }
 
 /* ---------------------------------------------------------------------- */
+/* 5.5 Grid cells                                                         */
+/* The container draws the top and left rules; each cell draws its right  */
+/* and bottom. Joins never double up, at any column count.                */
+/* ---------------------------------------------------------------------- */
+.cells {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  border-top: var(--rule-hair) solid var(--line-soft);
+  border-left: var(--rule-hair) solid var(--line-soft);
+}
+
+@media (min-width: 1024px) {
+  .cells {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--pad-cell);
+  border-right: var(--rule-hair) solid var(--line-soft);
+  border-bottom: var(--rule-hair) solid var(--line-soft);
+  background: var(--ground);
+}
+
+.cell__index {
+  font: var(--t-eyebrow);
+  letter-spacing: var(--ls-eyebrow);
+  color: var(--accent);
+}
+
+.cell__head {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.cell__title {
+  font: var(--t-h3);
+  letter-spacing: var(--ls-h3);
+  color: var(--ink);
+}
+
+.cell__sub {
+  font: var(--t-meta);
+  letter-spacing: var(--ls-meta);
+  color: var(--ink-faint);
+}
+
+.cell__desc {
+  max-width: var(--measure-body);
+  font: var(--t-body-sm);
+  color: var(--ink-body);
+}
+
+.cell__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+  margin-top: auto;
+}
+
+.cell__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-6);
+}
+
+/* Filter row (/projects) */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.filter-btn {
+  min-height: var(--btn-h-sm);
+  padding: 0;
+  border: 0;
+  background: none;
+  font: var(--t-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: var(--transition-hover);
+}
+
+.filter-btn[aria-pressed="true"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 6px;
+  text-decoration-thickness: var(--rule-focus);
+}
+
+.filter-btn:hover,
+.filter-btn:focus-visible {
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------------------------- */
 /* 5.6 Fact list                                                          */
 /* ---------------------------------------------------------------------- */
 .facts {

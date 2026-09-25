@@ -5,6 +5,7 @@
 import type { z } from "zod";
 import { Experience, NowEntry, Project, Role } from "./schemas";
 import { experience as experienceRaw } from "./experience";
+import { projects as projectsRaw } from "./projects";
 
 export class ContentError extends Error {}
 
@@ -41,7 +42,15 @@ export const experience = parseCollection("experience", Experience, experienceRa
   byRangeDesc,
 );
 
-// Stubs until prompts 6, 7, and 9 fill them in.
-export const projects = parseCollection("projects", Project, []);
+// Newest year first; entries from the same year keep their file order.
+export const projects = parseCollection("projects", Project, projectsRaw).sort(
+  (a, b) => b.year - a.year,
+);
+
+/** Tag display order for filters. */
+export const PROJECT_TAGS = ["ml", "data", "web", "hackathon", "api", "ai"] as const;
+export type ProjectTag = (typeof PROJECT_TAGS)[number];
+
+// Stubs until prompts 7 and 9 fill them in.
 export const leadership = parseCollection("leadership", Role, []);
 export const nowEntries = parseCollection("now", NowEntry, []);

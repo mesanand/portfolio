@@ -6,7 +6,7 @@
 try {
   const content = await import("../src/content/index.ts");
   const counts = Object.entries(content)
-    .filter(([, v]) => Array.isArray(v))
+    .filter(([k, v]) => Array.isArray(v) && /^[a-z]/.test(k))
     .map(([k, v]) => `${k}=${(v as unknown[]).length}`)
     .join(" ");
   console.log(`content ok: ${counts}`);

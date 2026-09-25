@@ -1,2 +1,3 @@
 // Loaded lazily by <LazyMotion> in Layout so animation code stays off the critical path.
-export { domAnimation as default } from "motion/react";
+// domMax (not domAnimation) because the /projects grid uses layout animations.
+export { domMax as default } from "motion/react";
