@@ -10,10 +10,10 @@ Every prompt assumes `docs/overhaul/` (this pack) is checked into the repo and t
 
 ```
 ACCENT_HEX        = #ffb02e        (from 02-DESIGN-SYSTEM.md section 2.2; gold unless you changed it)
-REPO_NAME         = mehr-anand.com
+REPO_NAME         = portfolio
 GITHUB_USER       = mesanand
 DOMAIN            = https://mehr-anand.com
-VERCEL_PROJECT    = (the existing Vercel project name for mehr-anand.com)
+VERCEL_PROJECT    = (the existing Vercel project name for portfolio)
 ```
 
 Replace `{{ACCENT_HEX}}` etc. in the prompts below with these values, or leave the placeholders and tell Claude the values in your first message; either works.

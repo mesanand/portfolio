@@ -1,0 +1,31 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Dependencies and build output
+node_modules
+dist
+dist-ssr
+
+# Env (never commit a token)
+.env
+.env*.local
+*.local
+
+# Test output
+test-results
+playwright-report
+coverage
+
+# Vercel
+.vercel
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.sw?
