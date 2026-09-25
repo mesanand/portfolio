@@ -89,9 +89,8 @@ export const leadership: RoleInput[] = [
     org: "Northeastern AI Club (AINU)",
     role: "Director of Operations and Chief People Officer",
     start: "2025-03",
-    end: "present",
-    current: true,
-    tier: "headline",
+    end: "2026-03",
+    tier: "supporting",
     summary:
       "Created sponsorships with Adobe and Anthropic and 10+ collaborations with clubs and companies. Managed $20K across client, partnership, sponsorship, and school funding. Built the Quantitative Research, Software Consulting, and Bioinformatics branches.",
     metrics: ["Adobe + Anthropic", "$20K managed", "3 new branches"],

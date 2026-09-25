@@ -254,25 +254,6 @@ async function gh<T>(token: string, url: string, init: RequestInit = {}): Promis
   return (await res.json()) as T;
 }
 
-/** The events API no longer includes commit messages on pushes; fetch the head commit's. */
-async function fillPushMessages(token: string, events: ActivityEvent[], raw: RestEvent[]) {
-  await Promise.all(
-    events.map(async (ev, i) => {
-      const src = raw[i]!;
-      if (ev.verb !== "pushed" || src.payload.commits?.length || !src.payload.head) return;
-      try {
-        const commit = await gh<{ commit: { message: string } }>(
-          token,
-          `https://api.github.com/repos/${ev.repo}/commits/${src.payload.head}`,
-        );
-        ev.message = truncate(commit.commit.message);
-      } catch {
-        // Keep the "to <branch>" fallback.
-      }
-    }),
-  );
-}
-
 export async function buildPayload(token: string): Promise<GithubPayload> {
   const [gql, rawEvents] = await Promise.all([
     gh<{ data?: { user: GqlUser | null }; errors?: unknown }>(
@@ -300,16 +281,15 @@ export async function buildPayload(token: string): Promise<GithubPayload> {
   );
   const days = weeks.flatMap((w) => w.days);
 
-  const kept: RestEvent[] = [];
+  // Home shows only the heatmap and stats, so push messages are not looked up
+  // (that cost one extra GitHub call per push). Events still feed "last push".
   const events: ActivityEvent[] = [];
   for (const e of rawEvents) {
     const mapped = mapEvent(e);
     if (!mapped) continue;
-    kept.push(e);
     events.push(mapped);
     if (events.length === MAX_EVENTS) break;
   }
-  await fillPushMessages(token, events, kept);
 
   const pinned = user.pinnedItems.nodes.filter((n): n is GqlRepo => "name" in n).map(toRepo);
   const recent = user.recent.nodes.map(toRepo);

@@ -8,7 +8,6 @@ export default function Skeleton() {
           <div key={i} className="gh-skel gh-skel--stat" />
         ))}
       </div>
-      <div className="gh-skel gh-skel--list" />
     </div>
   );
 }

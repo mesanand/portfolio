@@ -1032,65 +1032,6 @@ main > .section:last-child {
   color: var(--ink);
 }
 
-.gh-activity {
-  list-style: none;
-  padding: 0;
-  border-bottom: var(--rule-hair) solid var(--line-soft);
-}
-
-.gh-activity__row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-1) var(--space-4);
-  align-items: baseline;
-  padding-block: var(--space-3);
-  border-top: var(--rule-hair) solid var(--line-soft);
-  font: var(--t-meta);
-  letter-spacing: var(--ls-meta);
-}
-
-@media (min-width: 768px) {
-  .gh-activity__row {
-    grid-template-columns: 15ch 11ch 18ch minmax(0, 1fr);
-  }
-}
-
-.gh-activity__when {
-  color: var(--ink-faint);
-}
-
-.gh-activity__verb {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  color: var(--ink-body);
-}
-
-.gh-activity__verb svg {
-  color: var(--accent);
-}
-
-.gh-activity__repo,
-.gh-activity__msg {
-  color: var(--ink);
-  text-decoration: none;
-  transition: var(--transition-hover);
-  overflow-wrap: anywhere;
-}
-
-.gh-activity__msg {
-  font-family: var(--font-sans);
-  letter-spacing: 0;
-  color: var(--ink-body);
-}
-
-.gh-activity__repo:hover,
-.gh-activity__repo:focus-visible,
-.gh-activity__msg:hover,
-.gh-activity__msg:focus-visible {
-  color: var(--accent);
-}
-
 .gh-error {
   font: var(--t-body);
   color: var(--ink-faint);
@@ -1124,10 +1065,6 @@ main > .section:last-child {
 
 .gh-skel--stat {
   height: var(--space-12);
-}
-
-.gh-skel--list {
-  height: calc(4 * var(--space-12));
 }
 
 @keyframes skel-pulse {

@@ -1,4 +1,3 @@
-import ActivityList from "@/components/github/ActivityList";
 import Heatmap from "@/components/github/Heatmap";
 import Skeleton from "@/components/github/Skeleton";
 import StatsStrip from "@/components/github/StatsStrip";
@@ -23,7 +22,6 @@ export default function GithubModule() {
     <div className="gh">
       <Heatmap weeks={data.calendar.weeks} total={data.calendar.total} />
       <StatsStrip stats={data.stats} />
-      <ActivityList events={data.events} />
     </div>
   );
 }

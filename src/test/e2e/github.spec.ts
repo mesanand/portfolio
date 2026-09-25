@@ -82,7 +82,8 @@ test("heatmap: 53x7 = 371 cells, one accessible image, last cell is today", asyn
   expect(dates.at(-1)).toBe(new Date().toISOString().slice(0, 10));
   await expect(page.locator(".gh-stats")).toContainText("123");
   await expect(page.locator(".gh-stats")).toContainText("4 days");
-  await expect(page.locator(".gh-activity__row")).toHaveCount(1);
+  // Recent activity is intentionally not shown (Mehr, 2026-09-25): heatmap and stats only.
+  await expect(page.locator(".gh-activity__row")).toHaveCount(0);
 });
 
 test("error state is one line and the rest of the page is unaffected", async ({ page }) => {
