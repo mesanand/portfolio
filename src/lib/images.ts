@@ -37,14 +37,33 @@ export const workPhotos: Sets = collect(
   }),
 );
 
-export const highlightPhotos: Sets = collect(
-  import.meta.glob<string>("/src/assets/highlights/*.jpg", {
+export const lifePhotos: Sets = collect(
+  import.meta.glob<string>("/src/assets/life/*.jpg", {
     query: { w: "400;800;1200", format: "avif", as: "srcset" },
     import: "default",
     eager: true,
   }),
-  import.meta.glob<string>("/src/assets/highlights/*.jpg", {
+  import.meta.glob<string>("/src/assets/life/*.jpg", {
     query: { w: "400;800;1200", format: "webp", as: "srcset" },
+    import: "default",
+    eager: true,
+  }),
+  import.meta.glob<string>("/src/assets/life/*.jpg", {
+    query: { w: "800", format: "webp" },
+    import: "default",
+    eager: true,
+  }),
+);
+
+// Link-preview thumbnails for Highlights, stored at 1200x630 by `pnpm highlight`.
+export const highlightThumbs: Sets = collect(
+  import.meta.glob<string>("/src/assets/highlights/*.jpg", {
+    query: { w: "400;800", format: "avif", as: "srcset" },
+    import: "default",
+    eager: true,
+  }),
+  import.meta.glob<string>("/src/assets/highlights/*.jpg", {
+    query: { w: "400;800", format: "webp", as: "srcset" },
     import: "default",
     eager: true,
   }),

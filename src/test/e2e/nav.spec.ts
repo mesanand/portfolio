@@ -19,6 +19,7 @@ test.describe("desktop", () => {
       "WORK",
       "PROJECTS",
       "LEADERSHIP",
+      "HIGHLIGHTS",
       "Resume",
     ];
     const seen: string[] = [];
@@ -88,7 +89,7 @@ test.describe("phone menu", () => {
 });
 
 test.describe("frame", () => {
-  for (const path of ["/", "/work", "/projects", "/leadership"]) {
+  for (const path of ["/", "/work", "/projects", "/leadership", "/highlights"]) {
     test(`${path} renders inside the frame`, async ({ page }) => {
       await page.goto(path);
       await expect(page.locator("header.site-header")).toBeVisible();

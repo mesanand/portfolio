@@ -227,4 +227,8 @@ Entries with "(Mehr: fill in)" ship with `title: "LinkedIn post"` and an empty b
 - **Resident Student Association:** Boston era, not Oakland.
 - **Buildspace Nights & Weekends S5:** moved from leadership to honors.
 - **Now feed:** cut. No /now page, no NOW nav link, no now.json, no RSS. Replaced on Home by a **Highlights** carousel of photos (`src/content/highlights.ts`, `src/assets/highlights/`). Mehr writes the captions. Prompt 9 in 05-BUILD-PROMPTS is obsolete.
-- **GitHub heatmap:** go ahead with prompt 8 (token is in `.env.local`).
+- **GitHub heatmap:** go ahead with prompt 8 (token is in `.env.local`). Later: show the heatmap and stats only, no activity list.
+- **Carousel renamed** to "Slice of my life" (`src/content/life.ts`, `src/assets/life/`).
+- **New Highlights section** (`/highlights`, nav link, three newest on Home): articles about Mehr and his own posts, each with its stored link-preview thumbnail. Added with `pnpm highlight <url>` (`src/content/highlights.json`). Seeded with the Khoury 2026 convocation article (Huntington 100), Northeastern Global News articles from Apr 2024 (Experiential Treks, quoted) and Sep 2023 (move-in photo), and four LinkedIn posts.
+- **Rev:** role is "Alumni Corps (previously Director of Growth, cohort 3)".
+- **AINU:** ended March 2026 (supersedes "to present" above).

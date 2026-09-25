@@ -827,9 +827,9 @@ main > .section:last-child {
 }
 
 /* ---------------------------------------------------------------------- */
-/* Highlights carousel (Home)                                             */
+/* Slice of my life carousel (Home)                                             */
 /* ---------------------------------------------------------------------- */
-.highlights__controls {
+.carousel__controls {
   display: flex;
   justify-content: flex-end;
   gap: var(--space-6);
@@ -841,10 +841,10 @@ main > .section:last-child {
   cursor: default;
 }
 
-.highlights__track {
+.carousel__track {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: min(80vw, var(--highlight-w));
+  grid-auto-columns: min(80vw, var(--carousel-w));
   gap: var(--space-4);
   margin: 0;
   padding: 0 0 var(--space-3);
@@ -856,11 +856,11 @@ main > .section:last-child {
   scrollbar-color: var(--dash) transparent;
 }
 
-.highlight {
+.carousel-card {
   scroll-snap-align: start;
 }
 
-.highlight__figure {
+.carousel-card__figure {
   display: grid;
   height: 100%;
   align-content: start;
@@ -868,42 +868,42 @@ main > .section:last-child {
   border: var(--rule-hair) dashed var(--dash);
 }
 
-.highlight__photo {
+.carousel-card__photo {
   display: block;
   aspect-ratio: 4 / 3;
 }
 
-.highlight__photo img {
+.carousel-card__photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.highlight__text {
+.carousel-card__text {
   display: grid;
   gap: var(--space-1);
   padding: var(--space-4);
 }
 
-.highlight__title {
+.carousel-card__title {
   font: var(--t-h3);
   color: var(--ink);
 }
 
-.highlight__title a {
+.carousel-card__title a {
   color: inherit;
   text-decoration: none;
   transition: var(--transition-hover);
 }
 
-.highlight__title a:hover,
-.highlight__title a:focus-visible,
-.highlight__title a:hover .ext,
-.highlight__title a:focus-visible .ext {
+.carousel-card__title a:hover,
+.carousel-card__title a:focus-visible,
+.carousel-card__title a:hover .ext,
+.carousel-card__title a:focus-visible .ext {
   color: var(--accent);
 }
 
-.highlight__caption {
+.carousel-card__caption {
   font: var(--t-body-sm);
   color: var(--ink-body);
 }
@@ -1075,6 +1075,108 @@ main > .section:last-child {
   50% {
     opacity: 0.45;
   }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Highlights: article / post cards                                       */
+/* ---------------------------------------------------------------------- */
+.press-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .press-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .press-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.press-card__link {
+  display: grid;
+  align-content: start;
+  height: 100%;
+  background: var(--surface);
+  border: var(--rule-hair) dashed var(--dash);
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-hover);
+}
+
+a.press-card__link:hover,
+a.press-card__link:focus-visible {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+
+.press-card__thumb {
+  display: block;
+  aspect-ratio: 40 / 21;
+}
+
+.press-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.press-card__text {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+}
+
+.press-card__meta {
+  display: flex;
+  gap: var(--space-1);
+  font: var(--t-eyebrow);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.press-card__kind {
+  color: var(--accent);
+}
+
+.press-card__arrow {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  transition: var(--transition-hover);
+}
+
+a.press-card__link:hover .press-card__arrow,
+a.press-card__link:focus-visible .press-card__arrow {
+  color: var(--ink);
+}
+
+.press-card__title {
+  font: var(--t-h3);
+  letter-spacing: var(--ls-h3);
+  color: var(--ink);
+}
+
+a.press-card__link:hover .press-card__title,
+a.press-card__link:focus-visible .press-card__title {
+  color: var(--accent);
+}
+
+.press-card__note {
+  font: var(--t-body-sm);
+  color: var(--ink-body);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* ---------------------------------------------------------------------- */

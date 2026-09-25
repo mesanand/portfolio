@@ -1,9 +1,9 @@
-// Home "Highlights" carousel (replaces the Now feed, per Mehr on 2026-09-25).
-// `image` is a filename in src/assets/highlights/. Order here is the carousel order.
+// Home "Slice of my life" carousel (replaced the Now feed, per Mehr on 2026-09-25).
+// `image` is a filename in src/assets/life/. Order here is the carousel order.
 // Titles are working titles from what each photo shows; captions are Mehr's to write.
-import type { HighlightInput } from "./schemas";
+import type { LifePhotoInput } from "./schemas";
 
-export const highlights: HighlightInput[] = [
+export const life: LifePhotoInput[] = [
   {
     id: "convocation",
     title: "NYC Convocation panel",

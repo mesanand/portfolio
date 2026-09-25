@@ -62,9 +62,9 @@ export const Honor = z.object({
   url: z.string().url().optional(),
 });
 
-// Home "Highlights" carousel, replacing the Now feed (Mehr, 2026-09-25).
-// `image` is a filename under src/assets/highlights/.
-export const Highlight = z.object({
+// Home "Slice of my life" photo carousel (Mehr, 2026-09-25).
+// `image` is a filename under src/assets/life/.
+export const LifePhoto = z.object({
   id: z.string(),
   title: z.string().max(80),
   caption: z.string().max(160),
@@ -73,12 +73,27 @@ export const Highlight = z.object({
   url: z.string().url().optional(),
 });
 
+// Highlights: articles, posts, photos, and videos about or by Mehr (/highlights).
+// Added with `pnpm highlight <url>`, which stores the link's preview image as
+// `image`, a filename under src/assets/highlights/.
+export const Highlight = z.object({
+  id: z.string(),
+  kind: z.enum(["article", "post", "photo", "video"]),
+  title: z.string().max(140),
+  source: z.string().max(60).optional(), // "Northeastern Global News", "LinkedIn"
+  date: isoDate.optional(),
+  url: z.string().url().optional(),
+  image: z.string().optional(),
+  note: z.string().max(220).optional(),
+});
+
 /** Parsed shapes (defaults applied). */
 export type Experience = z.infer<typeof Experience>;
 export type Project = z.infer<typeof Project>;
 export type Role = z.infer<typeof Role>;
 export type Honor = z.infer<typeof Honor>;
 export type Highlight = z.infer<typeof Highlight>;
+export type LifePhoto = z.infer<typeof LifePhoto>;
 
 /** Authoring shapes (defaulted fields optional). Content files are typed with these. */
 export type ExperienceInput = z.input<typeof Experience>;
@@ -86,3 +101,4 @@ export type ProjectInput = z.input<typeof Project>;
 export type RoleInput = z.input<typeof Role>;
 export type HonorInput = z.input<typeof Honor>;
 export type HighlightInput = z.input<typeof Highlight>;
+export type LifePhotoInput = z.input<typeof LifePhoto>;

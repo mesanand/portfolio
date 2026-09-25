@@ -10,6 +10,7 @@ const collections = {
   experience: content.experience,
   projects: content.projects,
   leadership: content.leadership,
+  life: content.life,
   highlights: content.highlights,
 } as const;
 
@@ -71,8 +72,10 @@ describe("content", () => {
   it("every referenced photo exists", () => {
     for (const e of content.experience)
       if (e.image) expect(existsSync(`src/assets/work/${e.image}`), e.image).toBe(true);
+    for (const p of content.life)
+      expect(existsSync(`src/assets/life/${p.image}`), p.image).toBe(true);
     for (const h of content.highlights)
-      expect(existsSync(`src/assets/highlights/${h.image}`), h.image).toBe(true);
+      if (h.image) expect(existsSync(`src/assets/highlights/${h.image}`), h.image).toBe(true);
   });
 
   it("at most 4 featured entries per collection", () => {

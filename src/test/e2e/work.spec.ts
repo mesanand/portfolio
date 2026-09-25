@@ -63,14 +63,16 @@ test("/work shows a photo on the four roles that have one", async ({ page }) => 
   ).toHaveCount(0);
 });
 
-test("Highlights carousel pages with the buttons and never auto-advances", async ({ page }) => {
+test("Slice of my life carousel pages with the buttons and never auto-advances", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
-  const track = page.locator(".highlights__track");
-  const prev = page.getByRole("button", { name: "Previous highlights" });
-  const next = page.getByRole("button", { name: "Next highlights" });
+  const track = page.locator(".carousel__track");
+  const prev = page.getByRole("button", { name: "Previous photos" });
+  const next = page.getByRole("button", { name: "Next photos" });
   await track.scrollIntoViewIfNeeded();
-  await expect(page.locator(".highlight")).toHaveCount(10);
+  await expect(page.locator(".carousel-card")).toHaveCount(10);
   await expect(prev).toBeDisabled();
   const start = await track.evaluate((t) => t.scrollLeft);
   await page.waitForTimeout(1500);

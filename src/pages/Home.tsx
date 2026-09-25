@@ -3,12 +3,13 @@ import AsciiDivider from "@/components/AsciiDivider";
 import BracketButton from "@/components/BracketButton";
 import ExperienceRow from "@/components/ExperienceRow";
 import Hero from "@/components/Hero";
-import Highlights from "@/components/Highlights";
+import HighlightCard from "@/components/HighlightCard";
+import PhotoCarousel from "@/components/PhotoCarousel";
 import GithubSkeleton from "@/components/github/Skeleton";
 import LinkCard from "@/components/LinkCard";
 import ProjectCell from "@/components/ProjectCell";
 import Section, { SectionHead } from "@/components/Section";
-import { experience, highlights, projects } from "@/content";
+import { experience, highlights, life, projects } from "@/content";
 import headshotAvif from "@/assets/headshot.jpg?w=320;560;840&format=avif&as=srcset";
 import headshotWebpSet from "@/assets/headshot.jpg?w=320;560;840&format=webp&as=srcset";
 import headshotFallback from "@/assets/headshot.jpg?w=560&format=webp";
@@ -26,10 +27,28 @@ export default function Home() {
       <Hero />
       <AsciiDivider seed={1984} />
 
-      <Section id="highlights" labelledBy="home-highlights">
-        <SectionHead eyebrow="// HIGHLIGHTS" title="Highlights" id="home-highlights" />
-        <Highlights items={highlights} />
+      <Section id="life" labelledBy="home-life">
+        <SectionHead eyebrow="// SLICE OF LIFE" title="Slice of my life" id="home-life" />
+        <PhotoCarousel items={life} />
       </Section>
+
+      {highlights.length > 0 && (
+        <Section id="highlights" labelledBy="home-highlights">
+          <SectionHead
+            eyebrow="// HIGHLIGHTS"
+            title="In the news, and in my words"
+            id="home-highlights"
+          />
+          <ul className="press-grid" role="list">
+            {highlights.slice(0, 3).map((h) => (
+              <HighlightCard key={h.id} item={h} />
+            ))}
+          </ul>
+          <div className="section-foot">
+            <BracketButton href="/highlights">All highlights</BracketButton>
+          </div>
+        </Section>
+      )}
 
       <Section id="work" labelledBy="home-work">
         <SectionHead eyebrow="// WORK" title="Selected work" id="home-work" />

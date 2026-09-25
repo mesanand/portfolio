@@ -34,8 +34,19 @@ The Home "Commits, in public" section reads `/api/github`, a serverless function
 
 ## Where content lives
 
-All site copy is data, never JSX. Edit the typed modules in `src/content/` (`site.ts`, `experience.ts`, `projects.ts`, `leadership.ts`, `highlights.ts`). Every file is validated with zod at build time, so a bad entry fails the build instead of rendering blank. Schemas and rules: [03-ARCHITECTURE.md section 4](docs/overhaul/03-ARCHITECTURE.md#4-content-model).
+All site copy is data, never JSX. Edit the typed modules in `src/content/` (`site.ts`, `experience.ts`, `projects.ts`, `leadership.ts`, `life.ts`, `highlights.json`). Every file is validated with zod at build time, so a bad entry fails the build instead of rendering blank. Schemas and rules: [03-ARCHITECTURE.md section 4](docs/overhaul/03-ARCHITECTURE.md#4-content-model).
 
-## Adding a highlight
+## Adding a highlight (articles, posts, photos)
 
-The Home page carousel (which replaced the planned `/now` feed) reads `src/content/highlights.ts`. Drop a photo into `src/assets/highlights/` (4:3 works best; the build makes AVIF and WebP sizes), then add an entry with its filename, a title, a caption, and alt text. Order in the file is the order on the page.
+```sh
+pnpm highlight https://news.northeastern.edu/...            # an article
+pnpm highlight https://www.linkedin.com/posts/...           # one of your posts
+pnpm highlight <url> --title "..." --note "..." --image my-photo.jpg   # override anything
+pnpm highlight --photo my-photo.jpg --title "..."           # a photo with no link
+```
+
+The script reads the page's preview data once (title, date, site, preview image), saves the image as a 1200x630 thumbnail in `src/assets/highlights/`, and adds an entry to `src/content/highlights.json`. LinkedIn posts are titled with the post's first sentence. The site never loads anything from the original page, so a link that later changes keeps its thumbnail. `/highlights` shows everything, newest first; Home shows the three newest. Edit or delete entries in the JSON directly.
+
+## Slice of my life (the Home photo carousel)
+
+Drop a photo into `src/assets/life/` (4:3 works best), then add an entry to `src/content/life.ts` with its filename, a title, a caption, and alt text. Order in the file is the order on the page.
