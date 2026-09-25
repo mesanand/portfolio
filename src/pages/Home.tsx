@@ -1,9 +1,41 @@
+import AsciiDivider from "@/components/AsciiDivider";
+import Hero from "@/components/Hero";
+import LinkCard from "@/components/LinkCard";
 import Section, { SectionHead } from "@/components/Section";
+import { site } from "@/content/site";
 
 export default function Home() {
   return (
-    <Section labelledBy="home-title">
-      <SectionHead eyebrow="// HOME" title="Home" level={1} id="home-title" />
-    </Section>
+    <>
+      <Hero />
+      <AsciiDivider seed={1984} />
+
+      <Section id="now" labelledBy="home-now">
+        <SectionHead eyebrow="// NOW" title="What I'm doing this month" id="home-now" />
+      </Section>
+
+      <Section id="work" labelledBy="home-work">
+        <SectionHead eyebrow="// WORK" title="Selected work" id="home-work" />
+      </Section>
+
+      <Section id="github" labelledBy="home-github">
+        <SectionHead eyebrow="// GITHUB" title="Commits, in public" id="home-github" />
+      </Section>
+
+      <Section id="projects" labelledBy="home-projects">
+        <SectionHead eyebrow="// PROJECTS" title="Projects" id="home-projects" />
+      </Section>
+
+      <Section id="elsewhere" labelledBy="home-elsewhere">
+        <SectionHead eyebrow="// ELSEWHERE" title="Elsewhere" id="home-elsewhere" />
+        <div className="link-cards">
+          {site.socials.map((s) => (
+            <LinkCard key={s.url} icon={s.icon} title={s.label} subtitle={s.handle} href={s.url} />
+          ))}
+        </div>
+      </Section>
+
+      <AsciiDivider seed={2027} />
+    </>
   );
 }

@@ -177,6 +177,16 @@
   --heading-gap: clamp(32px, 5vw, 56px);
   --header-h: 80px;
 
+  /* 5.11 Hero */
+  --mark-cols: 47;
+  --mark-w: clamp(260px, 48vw, 760px);
+  --cell: calc(var(--mark-w) / var(--mark-cols));
+  --hero-pad-top: clamp(120px, 18vw, 170px);
+  --hero-pad-bottom: clamp(140px, 20vw, 220px);
+  --hero-glow-w: 1600px;
+  --hero-glow-h: 760px;
+  --hero-glow-offset: -420px;
+
   /* ------------------------------------------------------------------ */
   /* 4.3 Rules                                                          */
   /* ------------------------------------------------------------------ */

@@ -384,6 +384,123 @@ main > .section:last-child {
 }
 
 /* ---------------------------------------------------------------------- */
+/* 5.11 Hero                                                              */
+/* ---------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: var(--hero-pad-top) var(--hero-pad-bottom);
+  text-align: center;
+  background-image:
+    linear-gradient(
+      180deg,
+      var(--hero-scanline) 0 13%,
+      transparent 13% 87%,
+      var(--hero-scanline) 87% 100%
+    ),
+    var(--hero-gradient);
+  background-size:
+    100% var(--cell),
+    100% 100%;
+}
+
+/* Accent glow anchored below the fold. Decorative; pseudo-elements are not announced. */
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  bottom: var(--hero-glow-offset);
+  width: var(--hero-glow-w);
+  height: var(--hero-glow-h);
+  margin-left: calc(var(--hero-glow-w) / -2);
+  background: var(--hero-glow);
+  pointer-events: none;
+}
+
+.hero__inner {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-6);
+}
+
+.hero__mark {
+  width: var(--mark-w);
+  max-width: 100%;
+  margin-bottom: var(--space-4);
+}
+
+.hero__subline {
+  max-width: var(--measure-lead);
+  font: var(--t-lead);
+  letter-spacing: var(--ls-lead);
+  color: var(--ink-body);
+}
+
+.hero__where {
+  font: var(--t-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.hero__actions {
+  justify-content: center;
+  margin-top: var(--space-2);
+}
+
+/* ---------------------------------------------------------------------- */
+/* ASCII mark (5.11) and divider (5.12)                                   */
+/* ---------------------------------------------------------------------- */
+.ascii-mark {
+  width: 100%;
+  height: auto;
+  shape-rendering: crispEdges;
+}
+
+.ascii-mark__drop {
+  fill: var(--ascii-1);
+}
+
+.ascii-mark__first {
+  fill: var(--ascii-6);
+}
+
+.ascii-mark__second {
+  fill: var(--ascii-4);
+}
+
+.ascii-divider {
+  overflow: hidden;
+  font: var(--t-ascii);
+  letter-spacing: 0;
+  white-space: pre;
+  user-select: none;
+}
+
+.ascii-divider__row {
+  display: block;
+  height: 7.21px;
+}
+
+.ascii-divider__row::before {
+  content: attr(data-row);
+}
+
+.ascii-divider__row:first-child {
+  color: var(--ascii-1);
+}
+
+.ascii-divider__row {
+  color: var(--ascii-2);
+}
+
+.ascii-divider__row:last-child {
+  color: var(--ascii-3);
+}
+
+/* ---------------------------------------------------------------------- */
 /* 5.13 Footer                                                            */
 /* ---------------------------------------------------------------------- */
 .site-footer {

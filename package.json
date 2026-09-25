@@ -15,7 +15,8 @@
     "format": "prettier --write .",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "now": "tsx scripts/add-now-entry.ts"
+    "now": "tsx scripts/add-now-entry.ts",
+    "gen:ascii": "tsx scripts/gen-ascii.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

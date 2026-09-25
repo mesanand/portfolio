@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router";
+import { LazyMotion } from "motion/react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+
+const loadMotionFeatures = () => import("@/lib/motion-features").then((m) => m.default);
 
 /** Resets scroll on route change unless the URL targets an anchor. */
 function ScrollToTop() {
@@ -17,7 +20,7 @@ function ScrollToTop() {
 /** Frame for every route: skip link, header, main, footer. */
 export default function Layout() {
   return (
-    <>
+    <LazyMotion features={loadMotionFeatures} strict>
       <a className="skip-link" href="#main">
         Skip to content
       </a>
@@ -27,8 +30,13 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
-      <Analytics />
-      <SpeedInsights />
-    </>
+      {/* The /_vercel/* scripts only exist on Vercel; elsewhere they 404. */}
+      {__ON_VERCEL__ && (
+        <>
+          <Analytics />
+          <SpeedInsights />
+        </>
+      )}
+    </LazyMotion>
   );
 }
