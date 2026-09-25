@@ -72,7 +72,8 @@ test("Slice of my life carousel pages with the buttons and never auto-advances",
   const prev = page.getByRole("button", { name: "Previous photos" });
   const next = page.getByRole("button", { name: "Next photos" });
   await track.scrollIntoViewIfNeeded();
-  await expect(page.locator(".carousel-card")).toHaveCount(10);
+  await expect(page.locator(".carousel-card")).toHaveCount(7);
+  await expect(page.locator(".carousel-card figcaption")).toHaveCount(0);
   await expect(prev).toBeDisabled();
   const start = await track.evaluate((t) => t.scrollLeft);
   await page.waitForTimeout(1500);

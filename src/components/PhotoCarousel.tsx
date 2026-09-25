@@ -79,21 +79,6 @@ export default function PhotoCarousel({ items }: { items: readonly LifePhoto[] }
                     sizes="(min-width: 640px) 380px, 80vw"
                   />
                 )}
-                <figcaption className="carousel-card__text">
-                  <p className="carousel-card__title">
-                    {h.url ? (
-                      <a href={h.url} target="_blank" rel="noopener noreferrer">
-                        {h.title}
-                        <span className="ext" aria-hidden="true">
-                          ↗
-                        </span>
-                      </a>
-                    ) : (
-                      h.title
-                    )}
-                  </p>
-                  {h.caption && <p className="carousel-card__caption">{h.caption}</p>}
-                </figcaption>
               </figure>
             </li>
           );

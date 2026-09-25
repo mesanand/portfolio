@@ -8,12 +8,13 @@ What the build still needs from you. `07-ANSWERS.md` (including its section 9, t
 
 - [ ] **Resume PDF.** Put the current resume at `public/resume.pdf`. The header `[ RESUME ]` button links there and 404s until the file exists. (`src/content/site.ts`)
 - [ ] **Review the Highlights (`/highlights`).** Seven were added from what's public: the Khoury 2026 convocation article, two Northeastern Global News articles (2024 Experiential Treks, where you're quoted; 2023 move-in photos), and four of your LinkedIn posts. Delete any you don't want from `src/content/highlights.json`. The two older NGN thumbnails are the articles' own preview photos and don't show you; swap one with `pnpm highlight <url> --image your-photo.jpg` after deleting its entry. LinkedIn titles are your posts' first sentences, exclamation points included.
-- [ ] **Slice of my life captions.** All ten photos in `src/content/life.ts` have an empty `caption` and a working title. Write a one-line caption for each. Also confirm or fix these titles: Societies of Distinction (Huntington 100 induction?), Snowflake (which event?), Mosaic x Northeastern Entrepreneurship, "Northeastern event" (the photo speaking beside the man with the microphone), Trek Like a Husky, and "High school". Delete any you don't want; order in the file is the order on the page.
 - [ ] **NYC Network Connector start month.** Set to `2026-08`, a guess from the LinkedIn post date. (`src/content/experience.ts`)
 - [ ] **PEVC start month.** Set to `2026-01`, a guess. (`src/content/leadership.ts`)
 - [ ] **Cosint year.** 2024 is a guess from the repo. (`src/content/projects.ts`)
 
 ## Open questions
+
+- [ ] **Replacement photos for Slice of my life.** You removed NYC Convocation, Societies of Distinction, and the Claude Builders Club meeting and said you'd send new ones. Drop them in chat; 7 photos remain in `src/content/life.ts`.
 
 - [ ] **Brewster dates.** The site says Jul 2024 to Dec 2024 (from 07; 04 called the old site's "July 2025" a mistake). But your LinkedIn post from Jul 7, 2025 announces you're *joining* Brewster as a co-op, which points to Jul to Dec 2025. Which is right? (`src/content/experience.ts`; the Selected work order changes if it's 2025.)
 - [ ] **Internship post left out of Highlights.** Your most commented post (1,432 comments, May 2025) is a Summer 2025 call for Teens4Teens interns; most comments are "intern" replies to get the link. I left it off because it reads as an expired job ad. Say the word to add it: `pnpm highlight "https://www.linkedin.com/feed/update/urn:li:activity:7330600497734660097/"`.

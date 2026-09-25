@@ -69,7 +69,7 @@ export const Honor = z.object({
 export const LifePhoto = z.object({
   id: z.string(),
   title: z.string().max(80),
-  caption: z.string().max(160),
+  caption: z.string().max(160).optional(), // not displayed; photos only
   image: z.string(),
   alt: z.string(),
   url: z.string().url().optional(),
