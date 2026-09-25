@@ -230,7 +230,7 @@ Entries with "(Mehr: fill in)" ship with `title: "LinkedIn post"` and an empty b
 - **GitHub heatmap:** go ahead with prompt 8 (token is in `.env.local`). Later: show the heatmap and stats only, no activity list.
 - **Carousel renamed** to "Slice of my life" (`src/content/life.ts`, `src/assets/life/`).
 - **New Highlights section** (`/highlights`, nav link, three newest on Home): articles about Mehr and his own posts, each with its stored link-preview thumbnail. Added with `pnpm highlight <url>` (`src/content/highlights.json`). Seeded with the Khoury 2026 convocation article (Huntington 100), Northeastern Global News articles from Apr 2024 (Experiential Treks, quoted) and Sep 2023 (move-in photo), and four LinkedIn posts.
-- **Rev:** role is "Alumni Corps (previously Director of Growth, cohort 3)".
+- **Rev:** role is "Alumni Corps (previously Director of Growth, cohort 3)". The Revolve hackathon sentence ($50K goal, $12K prize) is replaced by "Startups from Rev have a combined value of $11B+."; the card's chip is "$11B+ combined startup value".
 - **AINU:** ended March 2026 (supersedes "to present" above).
 - **Oakland clubs:** Hydroponics, Robotics, and Bullet Journaling ran Sep 2023 to May 2024 (not May 2025).
 - **Hero motion (overrides 02 s1.7 "nothing loops"):** the scanlines drift slowly, and a strip of gold pixels flickers along the hero's bottom edge (`PixelField`, canvas). Both stop under prefers-reduced-motion; the pixels pause off screen.

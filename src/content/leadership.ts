@@ -44,8 +44,8 @@ export const leadership: RoleInput[] = [
     current: true,
     tier: "headline",
     summary:
-      "Northeastern's student entrepreneurship community. Cohort member (Spring 2025), e-board (Fall 2025), Director of Growth (Spring 2026), now Alumni Corps. Planned the Revolve hackathon with a $50K fundraising goal and a $12K grand prize.",
-    metrics: ["$50K goal", "$12K grand prize"],
+      "Northeastern's student entrepreneurship community. Cohort member (Spring 2025), e-board (Fall 2025), Director of Growth (Spring 2026), now Alumni Corps. Startups from Rev have a combined value of $11B+.",
+    metrics: ["$11B+ combined startup value"],
     era: "neu-boston",
   },
 
