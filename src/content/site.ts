@@ -34,7 +34,7 @@ export const site: Site = {
   name: "Mehr Anand",
   wordmark: ["MEHR", "ANAND"],
   tagline:
-    "Data engineer at General Atlantic. Founder of Northeastern's Anthropic chapter. I ship pipelines by day and communities by night.",
+    "Working AI in Private Equity. School club enthusiast. I ship pipelines by day and communities by night.",
   // Change "GENERAL ATLANTIC (NOW)" when the co-op ends in Dec 2026.
   whereList: ["NEW YORK CITY", "NORTHEASTERN '27", "GENERAL ATLANTIC (NOW)"],
   email: EMAIL,
