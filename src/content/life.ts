@@ -6,12 +6,6 @@ import type { LifePhotoInput } from "./schemas";
 
 export const life: LifePhotoInput[] = [
   {
-    id: "nyc-rooftop",
-    title: "NYC rooftop",
-    image: "nyc-rooftop.jpg",
-    alt: "Mehr with a friend on a rooftop, the New York City skyline lit up behind them at night.",
-  },
-  {
     id: "beach-chair",
     title: "Beach chair",
     image: "beach-chair.jpg",
