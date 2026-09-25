@@ -38,7 +38,7 @@ This folder is the complete plan for replacing `mesanand.github.io` with a new p
 
 Each prompt in `05-BUILD-PROMPTS.md` is written to be pasted verbatim into a fresh Claude Code session opened at the repo root. They assume the previous prompt finished and its acceptance criteria passed. If a prompt fails halfway, paste the same prompt again with "Continue from where the last session stopped; here is `git status` and the last error:" at the top.
 
-Prompts reference the other docs by file name. Keep this whole `docs/overhaul/` folder inside the repo so Claude Code can `Read` them. They cost almost nothing in context and save you re-explaining the design every session.
+Prompt runs must also read `07-ANSWERS.md`, which holds Mehr's resolved content and overrides `04-CONTENT-INVENTORY.md`. Prompts reference the other docs by file name. Keep this whole `docs/overhaul/` folder inside the repo so Claude Code can `Read` them. They cost almost nothing in context and save you re-explaining the design every session.
 
 ## What is deliberately not in this pack
 

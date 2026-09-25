@@ -353,6 +353,229 @@ main > .section:last-child {
 }
 
 /* ---------------------------------------------------------------------- */
+/* Shared bits: group labels, section footers, external-link arrow         */
+/* ---------------------------------------------------------------------- */
+.group-label {
+  font: var(--t-eyebrow);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: var(--space-4);
+}
+
+.section-foot {
+  margin-top: var(--space-8);
+}
+
+.ext {
+  margin-left: 0.4ch;
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  color: var(--ink-faint);
+  transition: var(--transition-hover);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 5.6 Fact list                                                          */
+/* ---------------------------------------------------------------------- */
+.facts {
+  display: grid;
+  gap: var(--space-3);
+  padding-top: var(--facts-rule-gap);
+  border-top: var(--rule-hair) dashed var(--chip-bg);
+}
+
+.facts__row {
+  display: grid;
+  grid-template-columns: var(--facts-key-col) minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: baseline;
+}
+
+.facts__key {
+  font: var(--t-eyebrow);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.facts__value {
+  margin: 0;
+  font: var(--t-body-sm);
+  color: var(--ink-body);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 5.7 Experience row                                                     */
+/* ---------------------------------------------------------------------- */
+.xp-group + .xp-group {
+  margin-top: var(--space-12);
+}
+
+.xp-list {
+  border-bottom: var(--rule-hair) solid var(--line-soft);
+}
+
+.xp-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+  padding-block: var(--space-8);
+  border-top: var(--rule-hair) solid var(--line-soft);
+}
+
+@media (min-width: 1024px) {
+  .xp-row {
+    grid-template-columns: var(--date-col) minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+.xp-row__date {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  align-self: start;
+  font: var(--t-meta);
+  letter-spacing: var(--ls-meta);
+  color: var(--ink-faint);
+}
+
+@media (min-width: 1024px) {
+  .xp-row__date {
+    /* Line the date up with the org name's first line. */
+    padding-top: var(--gap-tight);
+  }
+}
+
+.pulse-dot {
+  flex: none;
+  width: var(--pulse-dot);
+  height: var(--pulse-dot);
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.xp-row__body {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.xp-row__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+}
+
+.xp-row__org {
+  font: var(--t-h3);
+  letter-spacing: var(--ls-h3);
+  color: var(--ink);
+}
+
+.xp-row__org a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-hover);
+}
+
+.xp-row:hover .xp-row__org,
+.xp-row__org a:hover,
+.xp-row__org a:focus-visible {
+  color: var(--accent);
+}
+
+.xp-row__org a:hover .ext,
+.xp-row__org a:focus-visible .ext {
+  color: var(--accent);
+}
+
+.xp-row__loc {
+  font: var(--t-meta);
+  letter-spacing: var(--ls-meta);
+  color: var(--ink-faint);
+}
+
+.xp-row__role {
+  font: var(--t-body-sm);
+  color: var(--ink);
+}
+
+.xp-row__summary {
+  max-width: var(--measure-body);
+  font: var(--t-body-sm);
+  color: var(--ink-body);
+}
+
+.xp-row__bullets {
+  display: grid;
+  gap: var(--space-2);
+  max-width: var(--measure-body);
+  font: var(--t-body-sm);
+  color: var(--ink-body);
+}
+
+.xp-row__bullets li {
+  display: grid;
+  grid-template-columns: 2ch minmax(0, 1fr);
+}
+
+.xp-row__bullets li::before {
+  content: "-";
+  content: "-" / "";
+  font-family: var(--font-mono);
+  color: var(--ink-faint);
+}
+
+.xp-row .chips {
+  margin-top: var(--space-2);
+}
+
+/* ---------------------------------------------------------------------- */
+/* About strip (Home, 02 s8)                                              */
+/* ---------------------------------------------------------------------- */
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+@media (min-width: 640px) {
+  .about {
+    grid-template-columns: var(--headshot) minmax(0, 1fr);
+    gap: var(--space-8);
+    align-items: start;
+  }
+}
+
+.about__headshot {
+  width: var(--headshot);
+  aspect-ratio: 1;
+  border: var(--rule-hair) dashed var(--dash);
+}
+
+.about__text {
+  max-width: var(--measure-body);
+  font: var(--t-lead);
+  letter-spacing: var(--ls-lead);
+  color: var(--ink-body);
+}
+
+/* ---------------------------------------------------------------------- */
 /* 5.8 Chip                                                               */
 /* ---------------------------------------------------------------------- */
 .chip {

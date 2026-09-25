@@ -1,8 +1,13 @@
 import AsciiDivider from "@/components/AsciiDivider";
+import BracketButton from "@/components/BracketButton";
+import ExperienceRow from "@/components/ExperienceRow";
 import Hero from "@/components/Hero";
 import LinkCard from "@/components/LinkCard";
 import Section, { SectionHead } from "@/components/Section";
+import { experience } from "@/content";
 import { site } from "@/content/site";
+
+const featuredWork = experience.filter((e) => e.featured);
 
 export default function Home() {
   return (
@@ -16,6 +21,19 @@ export default function Home() {
 
       <Section id="work" labelledBy="home-work">
         <SectionHead eyebrow="// WORK" title="Selected work" id="home-work" />
+        <div className="about">
+          {/* Headshot slot; prompt 11 adds the image. */}
+          <div className="about__headshot" aria-hidden="true" />
+          <p className="about__text">{site.about}</p>
+        </div>
+        <div className="xp-list">
+          {featuredWork.map((e) => (
+            <ExperienceRow key={e.id} entry={e} compact />
+          ))}
+        </div>
+        <div className="section-foot">
+          <BracketButton href="/work">Full history</BracketButton>
+        </div>
       </Section>
 
       <Section id="github" labelledBy="home-github">

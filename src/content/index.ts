@@ -1,1 +1,47 @@
-export {};
+// Parses every content file and exports typed, sorted arrays.
+// A bad entry throws here, which fails `pnpm build` (via scripts/validate-content.ts)
+// and therefore the Vercel deploy. That is the point.
+// Relative imports only: this module also runs under tsx at build time.
+import type { z } from "zod";
+import { Experience, NowEntry, Project, Role } from "./schemas";
+import { experience as experienceRaw } from "./experience";
+
+export class ContentError extends Error {}
+
+/** Validates each entry on its own so the error names the entry id and the field path. */
+export function parseCollection<S extends z.ZodTypeAny>(
+  collection: string,
+  schema: S,
+  entries: readonly unknown[],
+): z.infer<S>[] {
+  return entries.map((entry, index) => {
+    const result = schema.safeParse(entry);
+    if (result.success) return result.data;
+    const id = entry && typeof entry === "object" && "id" in entry ? String(entry.id) : `#${index}`;
+    const issues = result.error.issues
+      .map((i) => `  - ${i.path.join(".") || "(root)"}: ${i.message}`)
+      .join("\n");
+    throw new ContentError(`Invalid ${collection} entry "${id}":\n${issues}`);
+  });
+}
+
+/** Sort key for date ranges: "present" first, then by start, newest first. */
+export function byRangeDesc(
+  a: { start: string; end: string },
+  b: { start: string; end: string },
+): number {
+  const aCurrent = a.end === "present";
+  const bCurrent = b.end === "present";
+  if (aCurrent !== bCurrent) return aCurrent ? -1 : 1;
+  if (!aCurrent && a.end !== b.end) return b.end.localeCompare(a.end);
+  return b.start.localeCompare(a.start);
+}
+
+export const experience = parseCollection("experience", Experience, experienceRaw).sort(
+  byRangeDesc,
+);
+
+// Stubs until prompts 6, 7, and 9 fill them in.
+export const projects = parseCollection("projects", Project, []);
+export const leadership = parseCollection("leadership", Role, []);
+export const nowEntries = parseCollection("now", NowEntry, []);

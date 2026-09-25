@@ -20,6 +20,8 @@ export interface Site {
   resumeUrl: string;
   calendarUrl: string | null;
   socials: readonly Social[];
+  /** About strip on Home, next to the headshot (~60 words). */
+  about: string;
   metaDescription: string;
   footerTagline: string;
 }
@@ -61,6 +63,9 @@ export const site: Site = {
       icon: "mail",
     },
   ],
+  // TODO(mehr): is "eight clubs" right (six at Oakland + Claude Builders Club + Content Club Boston)? Confirm the count.
+  about:
+    "Rising senior at Northeastern's Khoury College, BS Computer Science with an AI concentration and a math minor, Class of 2027. Right now I'm a Data Warehouse Management Engineer co-op at General Atlantic in New York, building ETL pipelines on Azure and Databricks and wiring financial systems into AI tools with MCP. Before that I did the same for an ambulance company. I've founded eight clubs across two campuses and currently run the Claude Builders Club, Northeastern's official Anthropic chapter.",
   metaDescription:
     "Mehr Anand is a data engineer and applied AI builder at Northeastern University (CS + AI, '27), currently a co-op at General Atlantic in New York. Founder of the Claude Builders Club.",
   footerTagline: "Built with Vite, React, and a lot of Geist Mono.",

@@ -176,6 +176,11 @@
   --section-pad: clamp(80px, 12vw, 160px);
   --heading-gap: clamp(32px, 5vw, 56px);
   --header-h: 80px;
+  --date-col: 160px; /* 5.7 experience date column, 5.5 role lines */
+  --facts-key-col: 96px; /* 5.6 */
+  --facts-rule-gap: 20px; /* 5.6 space between dashed rule and first fact */
+  --headshot: 160px; /* 8 */
+  --pulse-dot: 6px; /* 5.7 */
 
   /* 5.11 Hero */
   --mark-cols: 47;
