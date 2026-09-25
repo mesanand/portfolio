@@ -38,7 +38,7 @@ export const leadership: RoleInput[] = [
   {
     id: "rev",
     org: "Rev",
-    role: "Alumni Corps (previously Director of Growth)",
+    role: "Alumni Corps (previously Director of Growth, cohort 3)",
     start: "2025-01",
     end: "present",
     current: true,
