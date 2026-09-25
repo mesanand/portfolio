@@ -15,6 +15,9 @@ What the build still needs from you. `07-ANSWERS.md` (including its section 9, t
 
 ## Open questions
 
+- [ ] **Brewster dates.** The site says Jul 2024 to Dec 2024 (from 07; 04 called the old site's "July 2025" a mistake). But your LinkedIn post from Jul 7, 2025 announces you're *joining* Brewster as a co-op, which points to Jul to Dec 2025. Which is right? (`src/content/experience.ts`; the Selected work order changes if it's 2025.)
+- [ ] **Internship post left out of Highlights.** Your most commented post (1,432 comments, May 2025) is a Summer 2025 call for Teens4Teens interns; most comments are "intern" replies to get the link. I left it off because it reads as an expired job ad. Say the word to add it: `pnpm highlight "https://www.linkedin.com/feed/update/urn:li:activity:7330600497734660097/"`.
+
 - [ ] **Campus Nutrition Assistant repo.** The repo in 07 (`github.com/Sadfahlsdj/wafflehacks_june_2024`) returns 404. Is it private or renamed? The card links to Devpost only until a public `repo` URL is added. (`src/content/projects.ts`)
 - [ ] **"Eight so far" in the /leadership lede.** Prompt 7 specifies this line. Merging the Oakland AI Club into AINU doesn't change the founder count (Claude Builders Club, four at Oakland, three in high school), but 07 took the club count out of the about strip. Confirm or cut. (`src/pages/Leadership.tsx`)
 - [ ] **Company logos** for General Atlantic and Brewster in Selected work. Parked until you're ready; my recommendation is a single light color so they match the black-and-gold look.

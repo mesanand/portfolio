@@ -4,7 +4,7 @@ test("/highlights lists every item newest first, each card linking out", async (
   await page.goto("/highlights");
   await expect(page.getByRole("heading", { level: 1, name: "Highlights" })).toBeVisible();
   const cards = page.locator(".press-card");
-  await expect(cards).toHaveCount(8);
+  await expect(cards).toHaveCount(12);
   const links = cards.locator("a.press-card__link");
   for (const a of await links.all()) {
     await expect(a).toHaveAttribute("target", "_blank");
