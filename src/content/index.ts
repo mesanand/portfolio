@@ -3,9 +3,10 @@
 // and therefore the Vercel deploy. That is the point.
 // Relative imports only: this module also runs under tsx at build time.
 import type { z } from "zod";
-import { Experience, NowEntry, Project, Role } from "./schemas";
+import { Experience, Honor, NowEntry, Project, Role } from "./schemas";
 import { experience as experienceRaw } from "./experience";
 import { projects as projectsRaw } from "./projects";
+import { honors as honorsRaw, leadership as leadershipRaw } from "./leadership";
 
 export class ContentError extends Error {}
 
@@ -51,6 +52,14 @@ export const projects = parseCollection("projects", Project, projectsRaw).sort(
 export const PROJECT_TAGS = ["ml", "data", "web", "hackathon", "api", "ai"] as const;
 export type ProjectTag = (typeof PROJECT_TAGS)[number];
 
-// Stubs until prompts 7 and 9 fill them in.
-export const leadership = parseCollection("leadership", Role, []);
+export const leadership = parseCollection("leadership", Role, leadershipRaw).sort(byRangeDesc);
+
+// Honors have no id; the title stands in for it in error messages (zod strips it after).
+export const honors = parseCollection(
+  "honors",
+  Honor,
+  honorsRaw.map((h) => ({ id: h.title, ...h })),
+).sort((a, b) => b.year - a.year);
+
+// Stub until prompt 9 fills it in.
 export const nowEntries = parseCollection("now", NowEntry, []);

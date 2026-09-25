@@ -62,14 +62,24 @@ export const NowEntry = z.object({
   tags: z.array(z.string()).max(5).default([]),
 });
 
+// Not in 03 section 4; added by prompt 7 for the Leadership page's honors group.
+export const Honor = z.object({
+  year: z.number().int(),
+  title: z.string(),
+  body: z.string().max(260),
+  url: z.string().url().optional(),
+});
+
 /** Parsed shapes (defaults applied). */
 export type Experience = z.infer<typeof Experience>;
 export type Project = z.infer<typeof Project>;
 export type Role = z.infer<typeof Role>;
 export type NowEntry = z.infer<typeof NowEntry>;
+export type Honor = z.infer<typeof Honor>;
 
 /** Authoring shapes (defaulted fields optional). Content files are typed with these. */
 export type ExperienceInput = z.input<typeof Experience>;
 export type ProjectInput = z.input<typeof Project>;
 export type RoleInput = z.input<typeof Role>;
 export type NowEntryInput = z.input<typeof NowEntry>;
+export type HonorInput = z.input<typeof Honor>;
