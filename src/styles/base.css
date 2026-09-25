@@ -1,0 +1,218 @@
+/*
+ * Base styles: reset, font faces, body defaults, focus, reduced motion, utilities.
+ * Tokens live in tokens.css; components live in components.css.
+ */
+
+/* ---------------------------------------------------------------------- */
+/* Fonts (02 s3.1)                                                        */
+/* ---------------------------------------------------------------------- */
+@font-face {
+  font-family: "Funnel Display";
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+  src: url(/fonts/FunnelDisplay-300-800.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Funnel Sans";
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+  src: url(/fonts/FunnelSans-300-800.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  src: url(/fonts/GeistMono-100-900.woff2) format("woff2");
+}
+
+/*
+ * Metric-matched fallbacks so the swap from a local font to the web font
+ * does not shift layout. Values measured against the woff2 files with
+ * fontTools (average lowercase advance, hhea ascent/descent).
+ */
+@font-face {
+  font-family: "Funnel Sans Fallback";
+  src: local("Arial"), local("Helvetica Neue"), local("Helvetica"), local("Segoe UI");
+  size-adjust: 102%;
+  ascent-override: 98.1%;
+  descent-override: 24.5%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Funnel Display Fallback";
+  src: local("Arial"), local("Helvetica Neue"), local("Helvetica"), local("Segoe UI");
+  size-adjust: 108.1%;
+  ascent-override: 92.5%;
+  descent-override: 23.1%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Geist Mono Fallback";
+  src: local("Consolas"), local("Menlo"), local("DejaVu Sans Mono");
+  size-adjust: 109.1%;
+  ascent-override: 92.1%;
+  descent-override: 27%;
+  line-gap-override: 0%;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Reset                                                                  */
+/* ---------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  color-scheme: dark;
+  background: var(--bg-page);
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+img,
+svg,
+video,
+canvas,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Body defaults                                                          */
+/* ---------------------------------------------------------------------- */
+body {
+  min-height: 100vh;
+  background: var(--bg-page);
+  color: var(--text-body);
+  font: var(--t-body);
+  letter-spacing: var(--ls-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-heading);
+  font-family: var(--font-display);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Focus and selection                                                    */
+/* ---------------------------------------------------------------------- */
+:focus-visible {
+  outline: var(--rule-focus) solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Reduced motion (02 s6)                                                 */
+/* ---------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Utilities                                                              */
+/* ---------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: calc(var(--content-max) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Full-bleed: breaks out of any centered container to the viewport edges. */
+.bleed {
+  width: 100vw;
+  max-width: none;
+  margin-inline: calc(50% - 50vw);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.eyebrow {
+  font: var(--t-eyebrow);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}

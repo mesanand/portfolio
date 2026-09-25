@@ -1,0 +1,189 @@
+/*
+ * Design tokens. Source of truth: docs/overhaul/02-DESIGN-SYSTEM.md.
+ * Section numbers in comments refer to that document.
+ * Components never use a color, size, or font that is not defined here.
+ */
+
+:root {
+  /* ------------------------------------------------------------------ */
+  /* 2.1 The ladder                                                     */
+  /* ------------------------------------------------------------------ */
+  --ground: #000000; /* page background */
+  --surface: #0a0a0a; /* cards, feed items */
+  --surface-2: #141414; /* card hover, code blocks, nested surfaces */
+  --line-soft: #1a1a1a; /* solid hairlines between grid cells */
+  --chip-bg: #262626; /* chip fill, header bottom rule (dashed) */
+  --dash: #404040; /* dashed borders on cards */
+  --line: #606060; /* dashed border on hover, stronger rules */
+  --ink-faint: #808080; /* eyebrows, fact keys, disabled */
+  --ink-body: #a3a3a3; /* paragraphs, descriptions */
+  --ink: #e6e6e6; /* headings, primary text */
+  --white: #ffffff; /* buttons only */
+
+  /* ------------------------------------------------------------------ */
+  /* 2.2 Accent (gold)                                                  */
+  /* ------------------------------------------------------------------ */
+  --accent: #ffb02e;
+  --on-accent: #000000;
+  --accent-soft: #1a1204; /* accent at ~6% over black, hover wash */
+  --accent-900: #3d2a06; /* deep tint for highlight gradient */
+  --accent-chip-text: #ffd27a; /* lighter accent for text on --accent-soft chips */
+  --wordmark-accent: #d9921a; /* logo mark second half */
+
+  --hero-gradient: linear-gradient(0deg, #1c1302 0%, #100b01 35%, #050300 70%, #000 100%);
+  --highlight-gradient: linear-gradient(90deg, #7a5307 0%, #3d2a06 45%, #0a0700 85%);
+  --hero-glow: radial-gradient(
+    closest-side,
+    rgba(255, 176, 46, 0.28),
+    rgba(160, 100, 12, 0.12) 55%,
+    transparent
+  );
+  --hero-scanline: #161616; /* HACK1984 scanline band color */
+
+  /* ASCII mark ramp, dark to light. Used by the hero mark, dividers, heatmap. */
+  --ascii-0: #3a2707;
+  --ascii-1: #4a3208;
+  --ascii-2: #7e560c;
+  --ascii-3: #c08514;
+  --ascii-4: #ffb02e;
+  --ascii-5: #ffc966;
+  --ascii-6: #ffe6b8;
+
+  /* Header background once scrolled (5.1) */
+  --header-scrolled-bg: rgba(0, 0, 0, 0.72);
+  --header-blur: blur(8px);
+
+  /* ------------------------------------------------------------------ */
+  /* 2.3 Semantic aliases                                               */
+  /* ------------------------------------------------------------------ */
+  --bg-page: var(--ground);
+  --bg-card: var(--surface);
+  --bg-card-hover: var(--surface-2);
+  --border-card: var(--dash);
+  --border-card-hover: var(--line);
+  --border-grid: var(--line-soft);
+  --text-heading: var(--ink);
+  --text-body: var(--ink-body);
+  --text-meta: var(--ink-faint);
+  --text-link: var(--ink);
+  --text-link-hover: var(--accent);
+  --focus-ring: var(--accent);
+
+  /* ------------------------------------------------------------------ */
+  /* 3.1 Font stacks                                                    */
+  /* The "... Fallback" faces are metric-matched local fonts declared   */
+  /* in base.css so the swap to the web font does not shift layout.     */
+  /* ------------------------------------------------------------------ */
+  --font-display:
+    "Funnel Display", "Funnel Display Fallback", "Funnel Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Funnel Sans", "Funnel Sans Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* ------------------------------------------------------------------ */
+  /* 3.2 Type scale                                                     */
+  /* --t-*: font shorthand (weight size/line-height family).            */
+  /* --ls-*: letter-spacing, which the shorthand cannot carry.          */
+  /* --fs-*, --lh-*: size and line height, where a component needs them */
+  /* separately (e.g. the clamp sizes).                                 */
+  /* ------------------------------------------------------------------ */
+  --fs-hero: clamp(44px, 7vw, 96px);
+  --lh-hero: 0.95;
+  --t-hero: 700 var(--fs-hero) / var(--lh-hero) var(--font-display);
+  --ls-hero: -0.02em;
+
+  --fs-h1: clamp(32px, 4.5vw, 56px);
+  --lh-h1: 1.05;
+  --t-h1: 600 var(--fs-h1) / var(--lh-h1) var(--font-display);
+  --ls-h1: -0.015em;
+
+  --fs-h2: clamp(24px, 3vw, 36px);
+  --lh-h2: 1.15;
+  --t-h2: 600 var(--fs-h2) / var(--lh-h2) var(--font-display);
+  --ls-h2: -0.01em;
+
+  --t-h3: 600 20px / 28px var(--font-sans);
+  --ls-h3: 0;
+
+  --t-body: 400 16px / 24px var(--font-sans);
+  --ls-body: 0;
+
+  --t-body-sm: 400 15px / 23px var(--font-sans);
+  --ls-body-sm: 0;
+
+  --fs-lead: clamp(18px, 2vw, 22px);
+  --lh-lead: 1.45;
+  --t-lead: 400 var(--fs-lead) / var(--lh-lead) var(--font-sans);
+  --ls-lead: 0;
+
+  --t-eyebrow: 600 11px / 20px var(--font-mono);
+  --ls-eyebrow: 0.1em;
+
+  --t-label: 500 12px / 20px var(--font-mono);
+  --ls-label: 0.12em;
+
+  --t-btn: 500 15px / 1 var(--font-mono);
+  --ls-btn: 0.12em;
+  --btn-h: 48px;
+  --btn-h-sm: 44px;
+  --fs-btn-sm: 12px;
+
+  --t-meta: 400 13px / 20px var(--font-mono);
+  --ls-meta: 0.04em;
+
+  --t-chip: 500 11px / 18px var(--font-mono);
+  --ls-chip: 0.08em;
+
+  /* Small sans used for link-card subtitles (5.4) */
+  --t-caption: 400 13px / 18px var(--font-sans);
+
+  /* Wordmark (5.1): Display 700, 20px, tracking -0.02em */
+  --t-wordmark: 700 20px / 1 var(--font-display);
+  --ls-wordmark: -0.02em;
+
+  /* ASCII divider (5.12) */
+  --t-ascii: 400 7px / 7.21px var(--font-mono);
+
+  /* Measures (3.2 rules) */
+  --measure-heading: 20ch;
+  --measure-body: 64ch;
+  --measure-lead: 44ch;
+
+  /* ------------------------------------------------------------------ */
+  /* 4.1 Spacing scale                                                  */
+  /* ------------------------------------------------------------------ */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-24: 96px;
+  --space-40: 160px;
+
+  /* ------------------------------------------------------------------ */
+  /* 4.2 Page grid                                                      */
+  /* ------------------------------------------------------------------ */
+  --gutter: clamp(20px, 6vw, 160px);
+  --content-max: 1200px;
+  --section-pad: clamp(80px, 12vw, 160px);
+  --heading-gap: clamp(32px, 5vw, 56px);
+  --header-h: 80px;
+
+  /* ------------------------------------------------------------------ */
+  /* 4.3 Rules                                                          */
+  /* ------------------------------------------------------------------ */
+  --rule-hair: 1px;
+  --rule-focus: 2px;
+  --radius-none: 0;
+  --radius-pill: 999px;
+
+  /* ------------------------------------------------------------------ */
+  /* 6 Motion                                                           */
+  /* ------------------------------------------------------------------ */
+  --dur-hover: 0.12s;
+  --ease-hover: linear;
+  --transition-hover:
+    color var(--dur-hover) var(--ease-hover), background-color var(--dur-hover) var(--ease-hover),
+    border-color var(--dur-hover) var(--ease-hover);
+}
