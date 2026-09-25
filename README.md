@@ -24,7 +24,13 @@ pnpm test         # vitest (content schema tests, unit tests)
 pnpm test:e2e     # playwright (builds, then runs against preview)
 ```
 
-Copy `.env.example` to `.env.local` and fill `GITHUB_TOKEN` when working on the GitHub module. Never commit a token.
+## The GitHub module and `/api`
+
+The Home "Commits, in public" section reads `/api/github`, a serverless function (`api/github.ts`) that calls GitHub with a server-side token and returns one cached JSON. The token never reaches the browser.
+
+- **Local:** put `GITHUB_TOKEN=github_pat_...` in `.env.local` at the project root (gitignored). `pnpm dev` and `pnpm preview` serve `/api/github` themselves, through a small Vite plugin in `vite.config.ts` that runs the same handler, so there's no need for the Vercel CLI or `vercel dev`. Without a token the module shows its one-line error state and the rest of the page is unaffected.
+- **Production:** Vercel runs `api/github.ts` as a Node function. Set `GITHUB_TOKEN` in the Vercel project's environment variables (Production and Preview). Responses are CDN-cached for 15 minutes.
+- **Token:** fine-grained, public repositories, read-only, with an expiry of at most a year. Put the expiry date in your calendar.
 
 ## Where content lives
 

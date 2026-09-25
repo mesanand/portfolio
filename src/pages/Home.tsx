@@ -1,8 +1,10 @@
+import { lazy, Suspense } from "react";
 import AsciiDivider from "@/components/AsciiDivider";
 import BracketButton from "@/components/BracketButton";
 import ExperienceRow from "@/components/ExperienceRow";
 import Hero from "@/components/Hero";
 import Highlights from "@/components/Highlights";
+import GithubSkeleton from "@/components/github/Skeleton";
 import LinkCard from "@/components/LinkCard";
 import ProjectCell from "@/components/ProjectCell";
 import Section, { SectionHead } from "@/components/Section";
@@ -11,6 +13,9 @@ import headshotAvif from "@/assets/headshot.jpg?w=320;560;840&format=avif&as=src
 import headshotWebpSet from "@/assets/headshot.jpg?w=320;560;840&format=webp&as=srcset";
 import headshotFallback from "@/assets/headshot.jpg?w=560&format=webp";
 import { site } from "@/content/site";
+
+// Separate chunk: the heatmap code only loads with Home, after first paint.
+const GithubModule = lazy(() => import("@/components/github/GithubModule"));
 
 const featuredWork = experience.filter((e) => e.featured);
 const featuredProjects = projects.filter((p) => p.featured);
@@ -62,7 +67,18 @@ export default function Home() {
       </Section>
 
       <Section id="github" labelledBy="home-github">
-        <SectionHead eyebrow="// GITHUB" title="Commits, in public" id="home-github" />
+        <SectionHead
+          eyebrow="// GITHUB"
+          title="Commits, in public"
+          id="home-github"
+          lede="Live from github.com/mesanand, refreshed every 15 minutes."
+        />
+        <Suspense fallback={<GithubSkeleton />}>
+          <GithubModule />
+        </Suspense>
+        <div className="section-foot">
+          <BracketButton href="https://github.com/mesanand">Profile</BracketButton>
+        </div>
       </Section>
 
       <Section id="projects" labelledBy="home-projects">
