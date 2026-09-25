@@ -1,0 +1,448 @@
+/*
+ * Components. Source: docs/overhaul/02-DESIGN-SYSTEM.md section 5.
+ * Every value comes from tokens.css. Hover changes color only; nothing moves.
+ */
+
+/* ---------------------------------------------------------------------- */
+/* Skip link and main                                                     */
+/* ---------------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: calc(-1 * var(--space-24));
+  z-index: 200;
+  padding: var(--space-2) var(--space-4);
+  background: var(--accent);
+  color: var(--on-accent);
+  font: var(--t-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+main:focus {
+  outline: none;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 5.1 Header                                                             */
+/* ---------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-h);
+  border-bottom: var(--rule-hair) dashed var(--chip-bg);
+  background: transparent;
+  transition: var(--transition-hover);
+}
+
+.site-header[data-scrolled="true"] {
+  background: var(--header-scrolled-bg);
+  -webkit-backdrop-filter: var(--header-blur);
+  backdrop-filter: var(--header-blur);
+}
+
+.site-header__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.wordmark {
+  font: var(--t-wordmark);
+  letter-spacing: var(--ls-wordmark);
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.wordmark__accent {
+  color: var(--wordmark-accent);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.site-nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  list-style: none;
+  padding: 0;
+}
+
+.nav-link {
+  font: var(--t-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-decoration: none;
+  transition: var(--transition-hover);
+}
+
+.nav-link.active {
+  color: var(--ink);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--accent);
+}
+
+.site-header .menu-toggle {
+  display: none;
+}
+
+@media (max-width: 1023.98px) {
+  .site-nav,
+  .site-nav__list {
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 639.98px) {
+  .site-nav {
+    display: none;
+  }
+
+  .site-header .menu-toggle {
+    display: inline-flex;
+  }
+}
+
+/* Phone menu overlay */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: var(--ground);
+}
+
+.menu-overlay__bar {
+  flex: none;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: var(--rule-hair) dashed var(--chip-bg);
+}
+
+.menu-overlay__list {
+  display: grid;
+  gap: var(--space-6);
+  padding-block: var(--space-12);
+}
+
+.menu-overlay__link {
+  font: var(--t-h2);
+  letter-spacing: var(--ls-h2);
+  color: var(--ink);
+  text-decoration: none;
+  transition: var(--transition-hover);
+}
+
+.menu-overlay__link.active {
+  color: var(--accent);
+}
+
+.menu-overlay__link:hover,
+.menu-overlay__link:focus-visible {
+  color: var(--accent);
+}
+
+.menu-overlay__resume {
+  margin-top: var(--space-6);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 5.2 Bracket button                                                     */
+/* ---------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--btn-h);
+  padding: 0;
+  border: 0;
+  background: none;
+  font: var(--t-btn);
+  letter-spacing: var(--ls-btn);
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: var(--transition-hover);
+}
+
+/* Empty alt text after the slash: screen readers skip the brackets. */
+.btn::before {
+  content: "[";
+  content: "[" / "";
+  margin-right: var(--btn-bracket-gap);
+}
+
+.btn::after {
+  content: "]";
+  content: "]" / "";
+  margin-left: var(--btn-bracket-gap);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  color: var(--accent);
+}
+
+.btn:focus-visible {
+  outline: var(--rule-focus) solid var(--accent);
+  outline-offset: var(--focus-offset-btn);
+}
+
+.btn--sm {
+  font-size: var(--fs-btn-sm);
+  min-height: var(--btn-h-sm);
+}
+
+.btn--secondary {
+  color: var(--ink-body);
+}
+
+.btn__ext {
+  margin-left: 0.5ch;
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-8);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 5.3 Section + section head                                             */
+/* ---------------------------------------------------------------------- */
+.section {
+  padding-block: calc(var(--section-pad) / 2);
+}
+
+main > .section:first-child {
+  padding-top: var(--section-pad);
+}
+
+main > .section:last-child {
+  padding-bottom: var(--section-pad);
+}
+
+.section-head {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+  margin-bottom: var(--heading-gap);
+}
+
+.section-head__prefix {
+  color: var(--accent);
+}
+
+.section-head__title {
+  font: var(--t-h2);
+  letter-spacing: var(--ls-h2);
+  max-width: var(--measure-heading);
+}
+
+.section-head__title--page {
+  font: var(--t-h1);
+  letter-spacing: var(--ls-h1);
+}
+
+.section-head__lede {
+  max-width: var(--measure-body);
+  color: var(--text-body);
+}
+
+.section-head__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-8);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 5.4 Link card                                                          */
+/* ---------------------------------------------------------------------- */
+.link-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.link-cards--stack {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (max-width: 639.98px) {
+  .link-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.link-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--space-3);
+  padding: var(--pad-link-card);
+  background: var(--surface);
+  border: var(--rule-hair) dashed var(--dash);
+  color: var(--ink);
+  text-decoration: none;
+  transition: var(--transition-hover);
+}
+
+.link-card:hover,
+.link-card:focus-visible {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+
+.link-card__icon {
+  color: var(--ink-faint);
+  margin-top: 0;
+}
+
+.link-card__text {
+  display: grid;
+  gap: var(--gap-tight);
+  min-width: 0;
+}
+
+.link-card__title {
+  font: var(--t-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.link-card__subtitle {
+  font: var(--t-caption);
+  color: var(--ink-body);
+  overflow-wrap: anywhere;
+}
+
+.link-card__arrow {
+  font: var(--t-label);
+  font-family: var(--font-mono);
+  color: var(--ink-faint);
+  transition: var(--transition-hover);
+}
+
+.link-card:hover .link-card__arrow,
+.link-card:focus-visible .link-card__arrow {
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 5.8 Chip                                                               */
+/* ---------------------------------------------------------------------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--pad-chip);
+  border: var(--rule-hair) solid transparent;
+  border-radius: var(--radius-pill);
+  background: var(--chip-bg);
+  color: var(--ink);
+  font: var(--t-chip);
+  letter-spacing: var(--ls-chip);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.chip--accent {
+  background: var(--accent-soft);
+  color: var(--accent-chip-text);
+  border-color: var(--accent-900);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 5.13 Footer                                                            */
+/* ---------------------------------------------------------------------- */
+.site-footer {
+  border-top: var(--rule-hair) dashed var(--chip-bg);
+  padding-block: var(--space-24);
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-12);
+}
+
+@media (min-width: 1024px) {
+  .site-footer__grid {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr) minmax(0, 1fr);
+  }
+}
+
+.site-footer__brand {
+  display: grid;
+  justify-items: start;
+  align-content: start;
+  gap: var(--space-4);
+}
+
+.site-footer__bio {
+  font: var(--t-body-sm);
+  color: var(--ink-body);
+  max-width: var(--measure-lead);
+}
+
+.site-footer__nav ul {
+  display: grid;
+  gap: var(--space-3);
+  list-style: none;
+  padding: 0;
+}
+
+.site-footer__meta {
+  margin-top: var(--space-12);
+  padding-top: var(--space-6);
+  border-top: var(--rule-hair) solid var(--line-soft);
+  font: var(--t-meta);
+  letter-spacing: var(--ls-meta);
+  color: var(--ink-faint);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 404                                                                    */
+/* ---------------------------------------------------------------------- */
+.not-found .container {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-4);
+}
+
+.not-found__title {
+  font: var(--t-h1);
+  letter-spacing: var(--ls-h1);
+  max-width: var(--measure-heading);
+}

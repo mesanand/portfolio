@@ -152,7 +152,7 @@ p {
 /* ---------------------------------------------------------------------- */
 :focus-visible {
   outline: var(--rule-focus) solid var(--focus-ring);
-  outline-offset: 3px;
+  outline-offset: var(--focus-offset);
 }
 
 ::selection {
