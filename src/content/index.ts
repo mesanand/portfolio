@@ -7,6 +7,7 @@ import { Experience, Honor, NowEntry, Project, Role } from "./schemas";
 import { experience as experienceRaw } from "./experience";
 import { projects as projectsRaw } from "./projects";
 import { honors as honorsRaw, leadership as leadershipRaw } from "./leadership";
+import nowRaw from "./now.json";
 
 export class ContentError extends Error {}
 
@@ -61,5 +62,8 @@ export const honors = parseCollection(
   honorsRaw.map((h) => ({ id: h.title, ...h })),
 ).sort((a, b) => b.year - a.year);
 
-// Stub until prompt 9 fills it in.
-export const nowEntries = parseCollection("now", NowEntry, []);
+// Newest first. Seed entries from 07 section 5; titles and bodies marked "LinkedIn post" / "" are
+// intentionally bare until Mehr fills them in.
+export const nowEntries = parseCollection("now", NowEntry, nowRaw).sort((a, b) =>
+  b.date.localeCompare(a.date),
+);

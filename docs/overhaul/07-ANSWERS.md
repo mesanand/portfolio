@@ -110,7 +110,7 @@ Order: newest first.
 ### pistachio
 - name Pistachio · tagline "A commute app for the Verizon Smart Campus competition." · year 2025 **(guess)** · tags web
 - description: "Concept and pitch for a campus commute app, built for the Verizon Smart Campus competition."
-- links: video (Mehr to paste the YouTube URL into this file before prompt 6; if absent by then, CUT)
+- links: video https://www.youtube.com/watch?v=5Y9aCHEExkU
 
 ### CUT
 - Backyard (advisor only, nothing public yet). Revisit when it launches.
@@ -131,12 +131,17 @@ Order: newest first.
 
 ### Supporting tier (one line each), era neu-boston
 
+Dates confirmed from Mehr's LinkedIn Organizations section (2026-09-25).
+
 | id | org | role | start | end | one line |
 |---|---|---|---|---|---|
-| nibg | Northeastern Investment Banking Group | Advisor (previously VP of Quantitative Research) | 2025-01 | present | "Algorithmic trading research and the work to get the group recognized as an official SGA club." |
+| cosmo | Computer Science Mentoring Organization (COSMO) | Mentor | 2025-09 | present | "Tutoring and mentoring 40+ computer science students at Northeastern." |
 | pevc | Northeastern PEVC | Development Associate | 2026-01 **(guess, fix if wrong)** | present | "Private equity and venture capital club." |
-| ainu | Northeastern AI Club (AINU) | Director of Operations | 2025-03 | 2026-05 **(guess at end date)** | "Built the retention system, launched three specialist teams, ran events with Fidelity, brought in Anthropic and Adobe as sponsors." |
-| kaleidoscope | Kaleidoscope | Software Team | 2025-09 | 2026-05 **(guess at end date)** | "AWS resource management for a platform serving 80K+ student developers and 40+ organizations." |
+| nibg | Northeastern Investment Banking Group | Advisor (prev. VP of Technology, VP of Quantitative Research) | 2025-01 | present | "Got the group through SGA recognition, built automations, and directed the website build. VP roles Jan 2025 to Feb 2026, advisor since." |
+| ainu | Northeastern AI Club (AINU) | Director of Operations | 2025-03 | 2026-02 | "Landed Adobe, Anthropic, Snowflake, and Fidelity sponsorships; organized Innovate 2026, a weekend hackathon, solo in a month; launched Bioinformatics, Dev, and Quant teams; +40% membership, +60% retention." |
+| huntington-angels | Huntington Angels Network | Junior Associate | 2025-09 | 2026-01 | "Due diligence on startups feeding $5.3M+ in funding introductions; sourced 40+ ventures through outreach and alumni networks." |
+| kaleidoscope | Kaleidoscope | Head of Software (prev. Software Team) | 2025-02 | 2025-09 | "AWS resource management for a platform serving 80K+ student developers, 40+ organizations, and 9K end users." |
+| buildspace | Buildspace | Nights & Weekends S5 | 2024-06 | 2024-08 | "Six-week build cohort." |
 
 ### Honors (`honors` array)
 
@@ -149,17 +154,17 @@ Order: newest first.
 
 ### Supporting tier, era neu-oakland (one line each)
 
-Mehr founded or co-founded the first four. Dates end 2025-05 **(decided: the Oakland roles ended when he transferred to Boston; the old site's "Present" was stale)**.
+Mehr founded or co-founded the first four. Dates end 2025-05 where LinkedIn gives none **(decided: the Oakland roles ended when he transferred to Boston)**.
 
 | id | org | role | start | end | one line |
 |---|---|---|---|---|---|
-| content-club | Content Club | President and Founder | 2023-09 | 2025-05 | "Founded Oakland's media club, took over SGA's social media, 50K+ views, $500 raised, expanded to the London and Boston campuses with Adobe sponsorship." |
+| content-club | Content Club | Founder and President | 2023-09 | 2025-03 | "Founded Oakland's media club, partnered with Adobe, took over SGA's social media, 50K+ views, $500 raised, expanded to the Boston campus." |
 | hydroponics-oakland | Hydroponics Club | Co-President and Co-Founder | 2023-09 | 2025-05 | "Automated hydroponics with the campus farm; greenhouse restoration." |
 | robotics | Robotics Club | Co-VP and Co-Founder | 2023-09 | 2025-05 | "$750 raised; Raspberry Pi and Arduino vehicle; K-3 STEM teaching event." |
 | bullet-journaling | Bullet Journaling Club | Co-Founder and Secretary | 2023-09 | 2025-05 | "$500 raised; finals-week decompression events." |
-| rsa | Resident Student Association | Co-President | 2024-09 | 2025-04 | "$10K+ in funding, PEP budgeting, student advocacy for the residence hall." |
+| rsa | Resident Student Association | Co-President (prev. Secretary) | 2024-09 | 2025-04 | "Oversaw a $10K+ dorm budget, monthly PEP-funded events, and recruiting for the Sheraton Hotel residence committee." |
 | ai-club-oakland | Artificial Intelligence Club (Oakland) | Treasurer | 2024-09 | 2025-03 | "Managed a $65K budget through SGA, SOC, and SOOC approval." |
-| sga-sob | SGA Student Organizations Board | Secretary | 2024-09 | 2025-02 | "Constitution and bylaw review for 500+ organizations." |
+| sga-sob | Student Government Governance Board | Secretary (prev. Member) | 2024-09 | 2025-02 | "Reviewed 500+ constitutions and drove electoral changes in Student Senate for campus organizations." |
 | pawhacks | Pawhacks | Media Collaborator | 2024-02 | 2024-03 | "Media and ops for Oakland's hackathon; +40% engagement." |
 
 ### Archive tier, era high-school (inside `<details>`)
@@ -184,7 +189,7 @@ Dates decoded from the LinkedIn activity IDs (accurate to the day, UTC). Titles 
 | 2025-07-07-post | 2025-07-07 | linkedin | (Mehr: fill in) | https://www.linkedin.com/feed/update/urn:li:activity:7347946190128263168/ | |
 | 2025-05-20-post | 2025-05-20 | linkedin | (Mehr: fill in) | https://www.linkedin.com/feed/update/urn:li:activity:7330600497734660097/ | |
 
-Entries with "(Mehr: fill in)" ship with `title: "LinkedIn post"` and an empty body until replaced. Prompt 9 must not invent content for them.
+Entries with "(Mehr: fill in)" ship with `title: "LinkedIn post"` and an empty body until replaced. Prompt 9 must not invent content for them. Mehr has confirmed he will fill these in later; the site launches with them as bare links.
 
 ---
 
@@ -198,5 +203,8 @@ Entries with "(Mehr: fill in)" ship with `title: "LinkedIn post"` and an empty b
 
 1. Drop the current resume PDF into `public/resume.pdf`.
 2. Replace the five "(Mehr: fill in)" now-feed entries with real titles and two-sentence bodies (or use `docs/overhaul/skills/now-entry.md` once prompt 9 creates it).
-3. Paste the Pistachio YouTube URL into section 3 above, or tell Claude to cut it.
-4. Confirm or fix the four dates marked **(guess)**: NYC Connector start, PEVC start, AINU end, Kaleidoscope end.
+3. Confirm or fix the two dates still marked **(guess)**: NYC Connector start and PEVC start.
+
+## 8. LinkedIn headline (for reference, prompt 10 may reuse for meta)
+
+"Data Engineer @ General Atlantic | Prev. ML @ Brewster | T4T CTO | Founder @ BitsDime | ACM + PEVC | Adobe + SPM | Huntington 100" 

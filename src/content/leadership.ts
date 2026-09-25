@@ -49,17 +49,16 @@ export const leadership: RoleInput[] = [
     era: "neu-boston",
   },
 
-  // --- Supporting tier, Boston -----------------------------------------------
+  // --- Supporting tier, Boston (dates confirmed from LinkedIn, 2026-09-25) ---
   {
-    id: "nibg",
-    org: "Northeastern Investment Banking Group",
-    role: "Advisor (previously VP of Quantitative Research)",
-    start: "2025-01",
+    id: "cosmo",
+    org: "Computer Science Mentoring Organization (COSMO)",
+    role: "Mentor",
+    start: "2025-09",
     end: "present",
     current: true,
     tier: "supporting",
-    summary:
-      "Algorithmic trading research and the work to get the group recognized as an official SGA club.",
+    summary: "Tutoring and mentoring 40+ computer science students at Northeastern.",
     era: "neu-boston",
   },
   {
@@ -74,38 +73,71 @@ export const leadership: RoleInput[] = [
     era: "neu-boston",
   },
   {
+    id: "nibg",
+    org: "Northeastern Investment Banking Group",
+    role: "Advisor (prev. VP of Technology, VP of Quantitative Research)",
+    start: "2025-01",
+    end: "present",
+    current: true,
+    tier: "supporting",
+    summary:
+      "Got the group through SGA recognition, built automations, and directed the website build. VP roles Jan 2025 to Feb 2026, advisor since.",
+    era: "neu-boston",
+  },
+  {
     id: "ainu",
     org: "Northeastern AI Club (AINU)",
     role: "Director of Operations",
     start: "2025-03",
-    end: "2026-05", // TODO(mehr): end month is a guess; fix if wrong.
+    end: "2026-02",
     tier: "supporting",
     summary:
-      "Built the retention system, launched three specialist teams, ran events with Fidelity, brought in Anthropic and Adobe as sponsors.",
+      "Landed Adobe, Anthropic, Snowflake, and Fidelity sponsorships; organized Innovate 2026, a weekend hackathon, solo in a month; launched Bioinformatics, Dev, and Quant teams; +40% membership, +60% retention.",
+    era: "neu-boston",
+  },
+  {
+    id: "huntington-angels",
+    org: "Huntington Angels Network",
+    role: "Junior Associate",
+    start: "2025-09",
+    end: "2026-01",
+    tier: "supporting",
+    summary:
+      "Due diligence on startups feeding $5.3M+ in funding introductions; sourced 40+ ventures through outreach and alumni networks.",
     era: "neu-boston",
   },
   {
     id: "kaleidoscope",
     org: "Kaleidoscope",
-    role: "Software Team",
-    start: "2025-09",
-    end: "2026-05", // TODO(mehr): end month is a guess; fix if wrong.
+    role: "Head of Software (prev. Software Team)",
+    start: "2025-02",
+    end: "2025-09",
     tier: "supporting",
     summary:
-      "AWS resource management for a platform serving 80K+ student developers and 40+ organizations.",
+      "AWS resource management for a platform serving 80K+ student developers, 40+ organizations, and 9K end users.",
+    era: "neu-boston",
+  },
+  {
+    id: "buildspace",
+    org: "Buildspace",
+    role: "Nights & Weekends S5",
+    start: "2024-06",
+    end: "2024-08",
+    tier: "supporting",
+    summary: "Six-week build cohort.",
     era: "neu-boston",
   },
 
-  // --- Supporting tier, Oakland (ended with the transfer to Boston) ----------
+  // --- Supporting tier, Oakland (end 2025-05 where LinkedIn gives none) ------
   {
     id: "content-club",
     org: "Content Club",
-    role: "President and Founder",
+    role: "Founder and President",
     start: "2023-09",
-    end: "2025-05",
+    end: "2025-03",
     tier: "supporting",
     summary:
-      "Founded Oakland's media club, took over SGA's social media, 50K+ views, $500 raised, expanded to the London and Boston campuses with Adobe sponsorship.",
+      "Founded Oakland's media club, partnered with Adobe, took over SGA's social media, 50K+ views, $500 raised, expanded to the Boston campus.",
     era: "neu-oakland",
   },
   {
@@ -141,11 +173,12 @@ export const leadership: RoleInput[] = [
   {
     id: "rsa",
     org: "Resident Student Association",
-    role: "Co-President",
+    role: "Co-President (prev. Secretary)",
     start: "2024-09",
     end: "2025-04",
     tier: "supporting",
-    summary: "$10K+ in funding, PEP budgeting, student advocacy for the residence hall.",
+    summary:
+      "Oversaw a $10K+ dorm budget, monthly PEP-funded events, and recruiting for the Sheraton Hotel residence committee.",
     era: "neu-oakland",
   },
   {
@@ -160,12 +193,13 @@ export const leadership: RoleInput[] = [
   },
   {
     id: "sga-sob",
-    org: "SGA Student Organizations Board",
-    role: "Secretary",
+    org: "Student Government Governance Board",
+    role: "Secretary (prev. Member)",
     start: "2024-09",
     end: "2025-02",
     tier: "supporting",
-    summary: "Constitution and bylaw review for 500+ organizations.",
+    summary:
+      "Reviewed 500+ constitutions and drove electoral changes in Student Senate for campus organizations.",
     era: "neu-oakland",
   },
   {

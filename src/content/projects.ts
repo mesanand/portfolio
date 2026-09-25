@@ -1,8 +1,7 @@
 // Projects. Source: docs/overhaul/07-ANSWERS.md section 3
 // (overrides 04-CONTENT-INVENTORY.md section 3).
 // At most three `featured: true`; those show on Home.
-// CUT per 07: Backyard, bitsdime, Simple-Quiz-Game, Ask Vida, and Pistachio
-// (no video URL was supplied before prompt 6).
+// CUT per 07: Backyard, bitsdime, Simple-Quiz-Game, Ask Vida.
 import type { ProjectInput } from "./schemas";
 
 export const projects: ProjectInput[] = [
@@ -76,6 +75,19 @@ export const projects: ProjectInput[] = [
     links: {
       repo: "https://github.com/EhlOps/cosint",
       video: "https://www.youtube.com/watch?v=xzaVzXxL7mE",
+    },
+  },
+  {
+    id: "pistachio",
+    name: "Pistachio",
+    tagline: "A commute app for the Verizon Smart Campus competition.",
+    description:
+      "Concept and pitch for a campus commute app, built for the Verizon Smart Campus competition.",
+    year: 2025,
+    tags: ["web"],
+    stack: [],
+    links: {
+      video: "https://www.youtube.com/watch?v=5Y9aCHEExkU",
     },
   },
 ];

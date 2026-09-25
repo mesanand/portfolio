@@ -15,7 +15,7 @@ test("?tag=hackathon loads filtered; ALL restores and clears the param", async (
   await all.click();
   await expect(page).toHaveURL(/\/projects$/);
   await expect(all).toHaveAttribute("aria-pressed", "true");
-  await expect(cells).toHaveCount(4);
+  await expect(cells).toHaveCount(5);
 });
 
 test("filter buttons are keyboard-operable and announce state", async ({ page }) => {
