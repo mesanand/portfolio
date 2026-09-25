@@ -4,7 +4,7 @@ test("/highlights lists every item newest first, each card linking out", async (
   await page.goto("/highlights");
   await expect(page.getByRole("heading", { level: 1, name: "Highlights" })).toBeVisible();
   const cards = page.locator(".press-card");
-  await expect(cards).toHaveCount(7);
+  await expect(cards).toHaveCount(8);
   const links = cards.locator("a.press-card__link");
   for (const a of await links.all()) {
     await expect(a).toHaveAttribute("target", "_blank");
@@ -22,6 +22,8 @@ test("/highlights lists every item newest first, each card linking out", async (
 test("Home shows the three newest highlights and the renamed photo carousel", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("#highlights .press-card")).toHaveCount(3);
+  // Home shows the pinned items (home: true), newest first.
+  await expect(page.locator("#highlights .press-card").last()).toContainText("Top 100");
   await expect(
     page.locator("#highlights").getByRole("link", { name: "All highlights" }),
   ).toHaveAttribute("href", "/highlights");

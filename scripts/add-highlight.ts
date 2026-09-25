@@ -3,6 +3,7 @@
  *
  *   pnpm highlight <url> [--title "..."] [--note "..."] [--date YYYY-MM-DD]
  *                        [--kind article|post|photo|video] [--source "..."] [--image path/to/file.jpg]
+ *                        [--home]   (pin to the Home page)
  *   pnpm highlight --photo path/to/file.jpg --title "..." [--note "..."] [--date YYYY-MM-DD]
  *
  * For a link, the script reads the page's preview metadata (og:title, og:image,
@@ -42,6 +43,7 @@ const { values, positionals } = parseArgs({
     source: { type: "string" },
     image: { type: "string" },
     photo: { type: "string" },
+    home: { type: "boolean" },
   },
 });
 
@@ -114,13 +116,33 @@ function publishedDate(html: string, meta: Map<string, string>, url: string): st
   return raw?.slice(0, 10);
 }
 
+/**
+ * 1200x630 JPEG. Wide images are cropped around the most interesting region.
+ * Tall ones can't be cropped that wide without losing a face or a caption, so
+ * the whole photo sits centered on a blurred, darkened copy of itself.
+ */
 async function saveThumbnail(input: Buffer, id: string): Promise<string> {
   const file = `${id}.jpg`;
-  await sharp(input)
-    .rotate()
-    .resize(1200, 630, { fit: "cover", position: sharp.strategy.attention })
-    .jpeg({ quality: 84, mozjpeg: true })
-    .toFile(`${IMAGE_DIR}${file}`);
+  const upright = await sharp(input).rotate().toBuffer();
+  const { width = 1, height = 1 } = await sharp(upright).metadata();
+  const out = sharp(upright);
+  if (height > width * 0.9) {
+    const backdrop = await sharp(upright)
+      .resize(1200, 630, { fit: "cover" })
+      .blur(40)
+      .modulate({ brightness: 0.45 })
+      .toBuffer();
+    const photo = await sharp(upright).resize(1200, 630, { fit: "inside" }).toBuffer();
+    await sharp(backdrop)
+      .composite([{ input: photo, gravity: "center" }])
+      .jpeg({ quality: 84, mozjpeg: true })
+      .toFile(`${IMAGE_DIR}${file}`);
+  } else {
+    await out
+      .resize(1200, 630, { fit: "cover", position: sharp.strategy.attention })
+      .jpeg({ quality: 84, mozjpeg: true })
+      .toFile(`${IMAGE_DIR}${file}`);
+  }
   return file;
 }
 
@@ -182,6 +204,7 @@ async function main() {
   if (values.date) draft.date = values.date;
   if (values.kind) draft.kind = values.kind as HighlightInput["kind"];
   if (values.source) draft.source = values.source;
+  if (values.home) draft.home = true;
 
   const items = JSON.parse(readFileSync(JSON_PATH, "utf8")) as HighlightInput[];
   if (url && items.some((i) => i.url === url)) throw new Error(`Already added: ${url}`);

@@ -70,3 +70,8 @@ export const life = parseCollection("life", LifePhoto, lifeRaw);
 export const highlights = parseCollection("highlights", Highlight, highlightsRaw).sort((a, b) =>
   (b.date ?? "").localeCompare(a.date ?? ""),
 );
+
+/** Home shows items pinned with `home: true`; with none pinned, the newest three. */
+export const homeHighlights = highlights.some((h) => h.home)
+  ? highlights.filter((h) => h.home)
+  : highlights.slice(0, 3);

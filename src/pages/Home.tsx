@@ -9,7 +9,7 @@ import GithubSkeleton from "@/components/github/Skeleton";
 import LinkCard from "@/components/LinkCard";
 import ProjectCell from "@/components/ProjectCell";
 import Section, { SectionHead } from "@/components/Section";
-import { experience, highlights, life, projects } from "@/content";
+import { experience, homeHighlights, life, projects } from "@/content";
 import headshotAvif from "@/assets/headshot.jpg?w=320;560;840&format=avif&as=srcset";
 import headshotWebpSet from "@/assets/headshot.jpg?w=320;560;840&format=webp&as=srcset";
 import headshotFallback from "@/assets/headshot.jpg?w=560&format=webp";
@@ -32,7 +32,7 @@ export default function Home() {
         <PhotoCarousel items={life} />
       </Section>
 
-      {highlights.length > 0 && (
+      {homeHighlights.length > 0 && (
         <Section id="highlights" labelledBy="home-highlights">
           <SectionHead
             eyebrow="// HIGHLIGHTS"
@@ -40,7 +40,7 @@ export default function Home() {
             id="home-highlights"
           />
           <ul className="press-grid" role="list">
-            {highlights.slice(0, 3).map((h) => (
+            {homeHighlights.map((h) => (
               <HighlightCard key={h.id} item={h} />
             ))}
           </ul>

@@ -85,6 +85,7 @@ export const Highlight = z.object({
   url: z.string().url().optional(),
   image: z.string().optional(),
   note: z.string().max(220).optional(),
+  home: z.boolean().optional(), // pinned to Home; without pins, Home shows the newest three
 });
 
 /** Parsed shapes (defaults applied). */
