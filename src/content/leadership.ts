@@ -25,6 +25,7 @@ export const leadership: RoleInput[] = [
   {
     id: "acm",
     org: "ACM Northeastern",
+    orgUrl: "https://nuacm-website-euf7.vercel.app/",
     role: "Co-Director of Growth",
     start: "2026-05",
     end: "present",
@@ -38,6 +39,7 @@ export const leadership: RoleInput[] = [
   {
     id: "rev",
     org: "Rev",
+    orgUrl: "https://www.rev.school/",
     role: "Alumni Corps (previously Director of Growth, cohort 3)",
     start: "2025-01",
     end: "present",
@@ -53,6 +55,7 @@ export const leadership: RoleInput[] = [
   {
     id: "cosmo",
     org: "Computer Science Mentoring Organization (COSMO)",
+    orgUrl: "https://www.linkedin.com/company/neu-cosmo/",
     role: "Mentor",
     start: "2025-09",
     end: "present",
@@ -64,6 +67,7 @@ export const leadership: RoleInput[] = [
   {
     id: "pevc",
     org: "Northeastern PEVC",
+    orgUrl: "https://www.northeasternpevc.org/",
     role: "Development Associate",
     start: "2026-01", // TODO(mehr): start month is a guess; fix if wrong.
     end: "present",
@@ -75,6 +79,7 @@ export const leadership: RoleInput[] = [
   {
     id: "nibg",
     org: "Northeastern Investment Banking Group",
+    orgUrl: "https://www.linkedin.com/company/northeastern-investment-banking-group/",
     role: "Advisor (prev. VP of Technology, VP of Quantitative Research)",
     start: "2025-01",
     end: "present",
@@ -87,6 +92,7 @@ export const leadership: RoleInput[] = [
   {
     id: "ainu",
     org: "Northeastern AI Club (AINU)",
+    orgUrl: "https://ainortheastern.com/",
     role: "Director of Operations and Chief People Officer",
     start: "2025-03",
     end: "2026-03",
@@ -99,6 +105,7 @@ export const leadership: RoleInput[] = [
   {
     id: "huntington-angels",
     org: "Huntington Angels Network",
+    orgUrl: "https://huntingtonangelsnetwork.com/",
     role: "Junior Associate",
     start: "2025-09",
     end: "2026-01",
@@ -110,6 +117,7 @@ export const leadership: RoleInput[] = [
   {
     id: "kaleidoscope",
     org: "Kaleidoscope",
+    orgUrl: "https://www.linkedin.com/company/nukhourykaleidoscope/",
     role: "Head of Software (prev. Software Team)",
     start: "2025-02",
     end: "2025-09",
@@ -174,13 +182,13 @@ export const leadership: RoleInput[] = [
   },
   {
     id: "sga-sob",
-    org: "Student Government Governance Board",
-    role: "Secretary (prev. Member)",
+    org: "SGA SOG Board",
+    role: "Secretary",
     start: "2024-09",
     end: "2025-02",
     tier: "supporting",
     summary:
-      "Reviewed 500+ constitutions and drove electoral changes in Student Senate for campus organizations.",
+      "Reviewed constitutions and bylaws for 500+ organizations under the director of student involvement. Took meeting notes and organized information for several members of the board.",
     era: "neu-oakland",
   },
   {
