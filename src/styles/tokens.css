@@ -197,6 +197,8 @@
   --hero-glow-w: 1600px;
   --hero-glow-h: 760px;
   --hero-glow-offset: -420px;
+  --scan-drift: 5s; /* time for the scanlines to move one cell */
+  --pixel-band: clamp(72px, 11vw, 150px); /* height of the flickering pixel strip */
 
   /* ------------------------------------------------------------------ */
   /* 4.3 Rules                                                          */

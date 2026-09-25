@@ -1,6 +1,7 @@
 import { m as motion, useReducedMotion, type Transition } from "motion/react";
 import AsciiMark from "@/components/AsciiMark";
 import BracketButton from "@/components/BracketButton";
+import PixelField from "@/components/PixelField";
 import { site } from "@/content/site";
 
 const EASE: Transition["ease"] = [0.2, 0.8, 0.2, 1];
@@ -22,6 +23,7 @@ export default function Hero() {
 
   return (
     <section className="hero bleed" aria-labelledby="hero-title">
+      <PixelField />
       <div className="hero__inner container">
         <motion.h1
           id="hero-title"

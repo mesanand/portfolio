@@ -233,3 +233,4 @@ Entries with "(Mehr: fill in)" ship with `title: "LinkedIn post"` and an empty b
 - **Rev:** role is "Alumni Corps (previously Director of Growth, cohort 3)".
 - **AINU:** ended March 2026 (supersedes "to present" above).
 - **Oakland clubs:** Hydroponics, Robotics, and Bullet Journaling ran Sep 2023 to May 2024 (not May 2025).
+- **Hero motion (overrides 02 s1.7 "nothing loops"):** the scanlines drift slowly, and a strip of gold pixels flickers along the hero's bottom edge (`PixelField`, canvas). Both stop under prefers-reduced-motion; the pixels pause off screen.

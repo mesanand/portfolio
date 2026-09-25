@@ -1258,17 +1258,47 @@ a.press-card__link:focus-visible .press-card__title {
   overflow: hidden;
   padding-block: var(--hero-pad-top) var(--hero-pad-bottom);
   text-align: center;
-  background-image:
-    linear-gradient(
-      180deg,
-      var(--hero-scanline) 0 13%,
-      transparent 13% 87%,
-      var(--hero-scanline) 87% 100%
-    ),
-    var(--hero-gradient);
-  background-size:
-    100% var(--cell),
-    100% 100%;
+  background-image: var(--hero-gradient);
+}
+
+/*
+ * Scanlines on their own layer, drifting down one cell per --scan-drift and
+ * looping seamlessly (Mehr, 2026-09-25). Transform-only, so it stays on the
+ * compositor. The global reduced-motion rule in base.css stops it.
+ */
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: calc(-1 * var(--cell)) 0 0 0;
+  background-image: linear-gradient(
+    180deg,
+    var(--hero-scanline) 0 13%,
+    transparent 13% 87%,
+    var(--hero-scanline) 87% 100%
+  );
+  background-size: 100% var(--cell);
+  animation: scan-drift var(--scan-drift) linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan-drift {
+  to {
+    transform: translateY(var(--cell));
+  }
+}
+
+/* Flickering pixel strip along the bottom edge of the hero (PixelField). */
+.pixel-field {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: var(--pixel-band);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to top, black 35%, transparent);
+  mask-image: linear-gradient(to top, black 35%, transparent);
 }
 
 /* Accent glow anchored below the fold. Decorative; pseudo-elements are not announced. */
