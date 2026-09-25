@@ -32,10 +32,13 @@ test("filter buttons are keyboard-operable and announce state", async ({ page })
   await expect(page.locator(".cells .cell")).toHaveCount(3);
 });
 
-test("Home shows the three featured projects and a link to all", async ({ page }) => {
+test("Home has no projects section; the Projects page and nav link remain", async ({ page }) => {
   await page.goto("/");
-  await expect(page.locator("#projects .cell")).toHaveCount(3);
-  await expect(
-    page.locator("#projects").getByRole("link", { name: "All projects" }),
-  ).toHaveAttribute("href", "/projects");
+  await expect(page.locator("#projects")).toHaveCount(0);
+  await expect(page.locator(".site-nav").getByRole("link", { name: "PROJECTS" })).toHaveAttribute(
+    "href",
+    "/projects",
+  );
+  await page.goto("/projects");
+  await expect(page.locator(".cells .cell")).toHaveCount(6);
 });

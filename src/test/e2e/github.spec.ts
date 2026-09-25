@@ -93,7 +93,7 @@ test("error state is one line and the rest of the page is unaffected", async ({ 
     "GitHub is not answering. Try github.com/mesanand.",
   );
   await expect(page.locator("#github svg")).toHaveCount(0);
-  await expect(page.locator("#projects .cell")).toHaveCount(3);
+  await expect(page.locator("#elsewhere .link-card")).toHaveCount(4);
   await expect(page.locator("footer.site-footer")).toBeVisible();
 });
 
