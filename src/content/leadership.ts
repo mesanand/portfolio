@@ -119,7 +119,7 @@ export const leadership: RoleInput[] = [
     era: "neu-boston",
   },
 
-  // --- Supporting tier, Oakland (end 2025-05 where LinkedIn gives none) ------
+  // --- Supporting tier, Oakland ---------------------------------------------
   {
     id: "content-club",
     org: "Content Club",
@@ -136,7 +136,7 @@ export const leadership: RoleInput[] = [
     org: "Hydroponics Club",
     role: "Co-President and Co-Founder",
     start: "2023-09",
-    end: "2025-05",
+    end: "2024-05",
     tier: "supporting",
     summary: "Automated hydroponics with the campus farm; greenhouse restoration.",
     era: "neu-oakland",
@@ -146,7 +146,7 @@ export const leadership: RoleInput[] = [
     org: "Robotics Club",
     role: "Co-VP and Co-Founder",
     start: "2023-09",
-    end: "2025-05",
+    end: "2024-05",
     tier: "supporting",
     summary: "$750 raised; Raspberry Pi and Arduino vehicle; K-3 STEM teaching event.",
     era: "neu-oakland",
@@ -156,7 +156,7 @@ export const leadership: RoleInput[] = [
     org: "Bullet Journaling Club",
     role: "Co-Founder and Secretary",
     start: "2023-09",
-    end: "2025-05",
+    end: "2024-05",
     tier: "supporting",
     summary: "$500 raised; finals-week decompression events.",
     era: "neu-oakland",

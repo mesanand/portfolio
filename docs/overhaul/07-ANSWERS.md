@@ -232,3 +232,4 @@ Entries with "(Mehr: fill in)" ship with `title: "LinkedIn post"` and an empty b
 - **New Highlights section** (`/highlights`, nav link, three newest on Home): articles about Mehr and his own posts, each with its stored link-preview thumbnail. Added with `pnpm highlight <url>` (`src/content/highlights.json`). Seeded with the Khoury 2026 convocation article (Huntington 100), Northeastern Global News articles from Apr 2024 (Experiential Treks, quoted) and Sep 2023 (move-in photo), and four LinkedIn posts.
 - **Rev:** role is "Alumni Corps (previously Director of Growth, cohort 3)".
 - **AINU:** ended March 2026 (supersedes "to present" above).
+- **Oakland clubs:** Hydroponics, Robotics, and Bullet Journaling ran Sep 2023 to May 2024 (not May 2025).
