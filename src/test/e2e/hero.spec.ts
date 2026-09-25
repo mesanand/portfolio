@@ -5,7 +5,7 @@ for (const width of [320, 768, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
     await page.evaluate(() => document.fonts.ready);
-    const mark = page.getByRole("img", { name: "Mehr Anand" });
+    const mark = page.locator(".hero").getByRole("img", { name: "Mehr Anand" });
     await expect(mark).toBeVisible();
     const box = await mark.boundingBox();
     expect(box).not.toBeNull();

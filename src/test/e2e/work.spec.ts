@@ -33,3 +33,22 @@ test("Home shows featured work in compact mode", async ({ page }) => {
     "/work",
   );
 });
+
+test("Home headshot: AVIF, explicit size, lazy, grayscale until hover", async ({ page }) => {
+  await page.goto("/");
+  const img = page.getByRole("img", { name: "Mehr Anand", exact: true }).and(page.locator("img"));
+  await img.scrollIntoViewIfNeeded();
+  await expect(img).toHaveAttribute("width", "160");
+  await expect(img).toHaveAttribute("height", "160");
+  await expect(img).toHaveAttribute("loading", "lazy");
+  await expect
+    .poll(() => img.evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth))
+    .toBeGreaterThan(0);
+  expect(await img.evaluate((el: HTMLImageElement) => el.currentSrc)).toMatch(/\.avif$/);
+  const box = await img.boundingBox();
+  expect(Math.round(box!.width)).toBe(160);
+  expect(Math.round(box!.height)).toBe(160);
+  expect(await img.evaluate((el) => getComputedStyle(el).filter)).toBe("grayscale(1)");
+  await img.hover();
+  await expect.poll(() => img.evaluate((el) => getComputedStyle(el).filter)).toBe("none");
+});

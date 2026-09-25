@@ -25,4 +25,4 @@ Each item points at the file where the answer goes. `grep -rn "TODO(mehr)" src` 
 - Buildspace is filed under the Boston era because 07 lists it in the Boston table.
 - Pistachio has no stack chips because 07 lists none. Its year (2025) is still marked "(guess)" in 07 section 3, but section 7 no longer asks you to confirm it, so there is no code TODO for it.
 - The X link card uses a generic "@" icon. lucide-react 1.x ships no brand logos, and its `X` icon is a close button.
-- `src/assets/headshot.jpg` is a byte-for-byte copy of `docs/overhaul/assets/headshot.jpg` (6.9 MB, 6000x4000). Prompt 11 crops it and generates the 320/480 AVIF and WebP files. Both copies are in git for now; once prompt 11 has run, consider removing the docs copy or moving the originals out of the repo.
+- The headshot is live in the Home about strip. `src/assets/headshot.jpg` is a 960x960 centered crop (93 KB) of the original in `docs/overhaul/assets/headshot.jpg`. The build emits AVIF and WebP at 320 and 480 px (6 to 17 KB each), and the image is grayscale until hovered. The 6.9 MB original stays in `docs/` as the master; remove it from git if you want a lighter repo.

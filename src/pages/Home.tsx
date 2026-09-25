@@ -6,6 +6,9 @@ import LinkCard from "@/components/LinkCard";
 import ProjectCell from "@/components/ProjectCell";
 import Section, { SectionHead } from "@/components/Section";
 import { experience, projects } from "@/content";
+import headshotAvif from "@/assets/headshot.jpg?w=320;480&format=avif&as=srcset";
+import headshotWebpSet from "@/assets/headshot.jpg?w=320;480&format=webp&as=srcset";
+import headshotFallback from "@/assets/headshot.jpg?w=320&format=webp";
 import { site } from "@/content/site";
 
 const featuredWork = experience.filter((e) => e.featured);
@@ -24,8 +27,18 @@ export default function Home() {
       <Section id="work" labelledBy="home-work">
         <SectionHead eyebrow="// WORK" title="Selected work" id="home-work" />
         <div className="about">
-          {/* Headshot slot; prompt 11 adds the image. */}
-          <div className="about__headshot" aria-hidden="true" />
+          <picture className="about__headshot">
+            <source type="image/avif" srcSet={headshotAvif} sizes="160px" />
+            <source type="image/webp" srcSet={headshotWebpSet} sizes="160px" />
+            <img
+              src={headshotFallback}
+              alt="Mehr Anand"
+              width={160}
+              height={160}
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
           <p className="about__text">{site.about}</p>
         </div>
         <div className="xp-list">
