@@ -227,6 +227,9 @@ importers:
       prettier:
         specifier: ^3.9.9
         version: 3.9.9
+      sharp:
+        specifier: 0.34.5
+        version: 0.34.5
       tsx:
         specifier: ^4.23.15
         version: 4.23.15
