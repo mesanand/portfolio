@@ -11,14 +11,14 @@ export const leadership: RoleInput[] = [
     id: "claude-builders-club",
     org: "Claude Builders Club",
     orgUrl: "https://claudeneu.com",
-    role: "President and Founder",
+    role: "Founder and Advisor",
     start: "2025-09",
     end: "present",
     current: true,
     tier: "headline",
     // Reworded from 07 to fit the 260-character schema limit; same facts.
     summary:
-      "Founded and lead Northeastern's official Anthropic chapter: 150+ at kickoff, 200+ members now. Co-organized the Spring 2026 Revolve x Claude Builders hackathon across 78 campuses and HACK1984 (36 hours, 100 seats, Boston, Nov 6-8 2026) with Rev, ACM, and AINU.",
+      "Founded and advise Northeastern's official Anthropic chapter: 150+ at kickoff, 200+ members now. Co-organized the Spring 2026 Revolve x Claude Builders hackathon on 78 campuses and HACK1984 (36 hours, 100 seats, Boston, Nov 6-8 2026) with Rev, ACM, and AINU.",
     metrics: ["200+ members", "78-campus hackathon", "HACK1984"],
     era: "neu-boston",
   },
@@ -79,7 +79,7 @@ export const leadership: RoleInput[] = [
     start: "2025-01",
     end: "present",
     current: true,
-    tier: "supporting",
+    tier: "headline",
     summary:
       "Got the group through SGA recognition, built automations, and directed the website build. VP roles Jan 2025 to Feb 2026, advisor since.",
     era: "neu-boston",
@@ -87,12 +87,14 @@ export const leadership: RoleInput[] = [
   {
     id: "ainu",
     org: "Northeastern AI Club (AINU)",
-    role: "Director of Operations",
+    role: "Director of Operations and Chief People Officer",
     start: "2025-03",
-    end: "2026-02",
-    tier: "supporting",
+    end: "present",
+    current: true,
+    tier: "headline",
     summary:
-      "Landed Adobe, Anthropic, Snowflake, and Fidelity sponsorships; organized Innovate 2026, a weekend hackathon, solo in a month; launched Bioinformatics, Dev, and Quant teams; +40% membership, +60% retention.",
+      "Created sponsorships with Adobe and Anthropic and 10+ collaborations with clubs and companies. Managed $20K across client, partnership, sponsorship, and school funding. Built the Quantitative Research, Software Consulting, and Bioinformatics branches.",
+    metrics: ["Adobe + Anthropic", "$20K managed", "3 new branches"],
     era: "neu-boston",
   },
   {
@@ -115,16 +117,6 @@ export const leadership: RoleInput[] = [
     tier: "supporting",
     summary:
       "AWS resource management for a platform serving 80K+ student developers, 40+ organizations, and 9K end users.",
-    era: "neu-boston",
-  },
-  {
-    id: "buildspace",
-    org: "Buildspace",
-    role: "Nights & Weekends S5",
-    start: "2024-06",
-    end: "2024-08",
-    tier: "supporting",
-    summary: "Six-week build cohort.",
     era: "neu-boston",
   },
 
@@ -179,17 +171,7 @@ export const leadership: RoleInput[] = [
     tier: "supporting",
     summary:
       "Oversaw a $10K+ dorm budget, monthly PEP-funded events, and recruiting for the Sheraton Hotel residence committee.",
-    era: "neu-oakland",
-  },
-  {
-    id: "ai-club-oakland",
-    org: "Artificial Intelligence Club (Oakland)",
-    role: "Treasurer",
-    start: "2024-09",
-    end: "2025-03",
-    tier: "supporting",
-    summary: "Managed a $65K budget through SGA, SOC, and SOOC approval.",
-    era: "neu-oakland",
+    era: "neu-boston",
   },
   {
     id: "sga-sob",
@@ -267,6 +249,11 @@ export const leadership: RoleInput[] = [
 ];
 
 export const honors: HonorInput[] = [
+  {
+    year: 2024,
+    title: "Buildspace Nights & Weekends S5",
+    body: "Six-week build cohort.",
+  },
   {
     year: 2026,
     title: "Huntington 100",

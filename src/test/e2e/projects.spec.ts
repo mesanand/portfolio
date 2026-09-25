@@ -15,7 +15,7 @@ test("?tag=hackathon loads filtered; ALL restores and clears the param", async (
   await all.click();
   await expect(page).toHaveURL(/\/projects$/);
   await expect(all).toHaveAttribute("aria-pressed", "true");
-  await expect(cells).toHaveCount(5);
+  await expect(cells).toHaveCount(6);
 });
 
 test("filter buttons are keyboard-operable and announce state", async ({ page }) => {
@@ -29,7 +29,7 @@ test("filter buttons are keyboard-operable and announce state", async ({ page })
   await page.getByRole("button", { name: "ml", exact: true }).focus();
   await page.keyboard.press("Space");
   await expect(page).toHaveURL(/\?tag=ml$/);
-  await expect(page.locator(".cells .cell")).toHaveCount(2);
+  await expect(page.locator(".cells .cell")).toHaveCount(3);
 });
 
 test("Home shows the three featured projects and a link to all", async ({ page }) => {

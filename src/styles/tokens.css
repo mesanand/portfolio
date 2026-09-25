@@ -179,7 +179,10 @@
   --date-col: 160px; /* 5.7 experience date column, 5.5 role lines */
   --facts-key-col: 96px; /* 5.6 */
   --facts-rule-gap: 20px; /* 5.6 space between dashed rule and first fact */
-  --headshot: 160px; /* 8 */
+  --headshot: 200px; /* 8; --headshot-lg from 640px up */
+  --headshot-lg: 280px;
+  --xp-photo: 240px; /* work photo column */
+  --highlight-w: 380px; /* carousel card width, desktop */
   --pulse-dot: 6px; /* 5.7 */
 
   /* 5.11 Hero */

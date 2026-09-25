@@ -3,11 +3,11 @@
 // and therefore the Vercel deploy. That is the point.
 // Relative imports only: this module also runs under tsx at build time.
 import type { z } from "zod";
-import { Experience, Honor, NowEntry, Project, Role } from "./schemas";
+import { Experience, Highlight, Honor, Project, Role } from "./schemas";
 import { experience as experienceRaw } from "./experience";
 import { projects as projectsRaw } from "./projects";
 import { honors as honorsRaw, leadership as leadershipRaw } from "./leadership";
-import nowRaw from "./now.json";
+import { highlights as highlightsRaw } from "./highlights";
 
 export class ContentError extends Error {}
 
@@ -62,8 +62,5 @@ export const honors = parseCollection(
   honorsRaw.map((h) => ({ id: h.title, ...h })),
 ).sort((a, b) => b.year - a.year);
 
-// Newest first. Seed entries from 07 section 5; titles and bodies marked "LinkedIn post" / "" are
-// intentionally bare until Mehr fills them in.
-export const nowEntries = parseCollection("now", NowEntry, nowRaw).sort((a, b) =>
-  b.date.localeCompare(a.date),
-);
+// Home carousel, in file order. Replaced the Now feed on 2026-09-25.
+export const highlights = parseCollection("highlights", Highlight, highlightsRaw);

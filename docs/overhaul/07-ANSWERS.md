@@ -208,3 +208,23 @@ Entries with "(Mehr: fill in)" ship with `title: "LinkedIn post"` and an empty b
 ## 8. LinkedIn headline (for reference, prompt 10 may reuse for meta)
 
 "Data Engineer @ General Atlantic | Prev. ML @ Brewster | T4T CTO | Founder @ BitsDime | ACM + PEVC | Adobe + SPM | Huntington 100" 
+
+---
+
+## 9. Changes from chat with Mehr (2026-09-25, afternoon). These override everything above.
+
+- **Headshot:** always in color (no grayscale), 280px square from 640px up, 200px on phones.
+- **About strip:** "...and currently advise the Claude Builders Club, Northeastern's official Anthropic chapter."
+- **Claude Builders Club:** role is "Founder and Advisor".
+- **NYC Network Connector:** summary only; the duplicate bullet is removed (Experience `bullets` may now be empty).
+- **Job photos:** General Atlantic, Brewster, Teens4Teens, and the NYC Connector have photos (`src/assets/work/`), shown in color on /work and Home.
+- **Company logos (General Atlantic, Brewster):** Mehr likes the idea; parked until he comes back to it.
+- **Cosint:** CS 3200 (Database Design) final project; video https://www.youtube.com/watch?v=xzaVzXxL7mE.
+- **Pistachio:** entry for the Northeastern Verizon Campus Challenge; video https://www.youtube.com/watch?v=5Y9aCHEExkU.
+- **Chordly (new project):** CS 4100 (Artificial Intelligence) final project, 2026. Mehr was project manager (system design, frontend) on a team of four. Markov chain, PyTorch LSTM, and a genetic algorithm generating chord progressions; music21 + FluidSynth audio; FastAPI + Streamlit. Repo https://github.com/Sadfahlsdj/CS4100-Project, video https://youtu.be/r7bYgrsZ570.
+- **AINU:** merged with the old "Artificial Intelligence Club (Oakland), Treasurer" entry. One role: Director of Operations and Chief People Officer, Mar 2025 to present, headline tier. Bullets from Mehr: sponsorships with Adobe and Anthropic plus 10+ collaborations with clubs, societies, organizations, and companies; managed $20,000 across client, partnership, sponsorship, and school funding; restructured and created the Quantitative Research, Software Development Consulting, and Bioinformatics branches, leading recruitment and end-to-end deliverables.
+- **NIBG:** headline tier (full card).
+- **Resident Student Association:** Boston era, not Oakland.
+- **Buildspace Nights & Weekends S5:** moved from leadership to honors.
+- **Now feed:** cut. No /now page, no NOW nav link, no now.json, no RSS. Replaced on Home by a **Highlights** carousel of photos (`src/content/highlights.ts`, `src/assets/highlights/`). Mehr writes the captions. Prompt 9 in 05-BUILD-PROMPTS is obsolete.
+- **GitHub heatmap:** go ahead with prompt 8 (token is in `.env.local`).

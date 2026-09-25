@@ -1,28 +1,28 @@
 # TODO(mehr)
 
-What the build still needs from you. `07-ANSWERS.md` (updated 2026-09-25) answered most of the original questions; this list is only what is still open after applying it.
+What the build still needs from you. `07-ANSWERS.md` (including its section 9, the decisions from our chat) holds everything already answered; this is only what's still open.
 
-Each item points at the file where the answer goes. `grep -rn "TODO(mehr)" src` lists every open item in code.
+`grep -rn "TODO(mehr)" src` lists every open item in code.
 
 ## Before launch
 
 - [ ] **Resume PDF.** Put the current resume at `public/resume.pdf`. The header `[ RESUME ]` button links there and 404s until the file exists. (`src/content/site.ts`)
+- [ ] **Highlight captions.** All ten highlights in `src/content/highlights.ts` have an empty `caption` and a working title. Write a one-line caption for each. Also confirm or fix these titles: Societies of Distinction (Huntington 100 induction?), Snowflake (which event?), Mosaic x Northeastern Entrepreneurship, "Northeastern event" (the photo speaking beside the man with the microphone), Trek Like a Husky, and "High school". Delete any you don't want; order in the file is the order on the page.
 - [ ] **NYC Network Connector start month.** Set to `2026-08`, a guess from the LinkedIn post date. (`src/content/experience.ts`)
 - [ ] **PEVC start month.** Set to `2026-01`, a guess. (`src/content/leadership.ts`)
-- [ ] **Five "LinkedIn post" feed entries.** They ship as bare links with an empty body, as agreed in 07 section 5. Replace the title and body when you have them. (`src/content/now.json`)
+- [ ] **Cosint year.** 2024 is a guess from the repo. (`src/content/projects.ts`)
 
-## Open questions carried from 07
+## Open questions
 
-- [ ] **Campus Nutrition Assistant repo.** The repo in 07 (`github.com/Sadfahlsdj/wafflehacks_june_2024`) returns 404, and neither account has a matching public repo. Is it private or renamed? The cell links to Devpost only until a public `repo` URL is added. (`src/content/projects.ts`)
-- [ ] **Cosint.** The year (2024) is a best guess. If you don't recognize the project after watching the video, cut it. (`src/content/projects.ts`)
-- [ ] **"Eight so far" in the /leadership lede.** Prompt 7 specifies this line. The number matches the founder and co-founder roles in the data (Claude Builders Club, four at Oakland, three in high school), but 07 took the club count out of the about strip. Confirm it or cut the sentence. (`src/pages/Leadership.tsx`)
+- [ ] **Campus Nutrition Assistant repo.** The repo in 07 (`github.com/Sadfahlsdj/wafflehacks_june_2024`) returns 404. Is it private or renamed? The card links to Devpost only until a public `repo` URL is added. (`src/content/projects.ts`)
+- [ ] **"Eight so far" in the /leadership lede.** Prompt 7 specifies this line. Merging the Oakland AI Club into AINU doesn't change the founder count (Claude Builders Club, four at Oakland, three in high school), but 07 took the club count out of the about strip. Confirm or cut. (`src/pages/Leadership.tsx`)
+- [ ] **Company logos** for General Atlantic and Brewster in Selected work. Parked until you're ready; my recommendation is a single light color so they match the black-and-gold look.
+- [ ] **GitHub private contributions.** Your public calendar shows 33 contributions in the past year. If most of your work is in private repos, turn on GitHub → Settings → Profile → "Include private contributions on my profile" and the heatmap will show those days too (counts only, no repo names).
 
 ## Notes on decisions made during the build
 
-- Brewster, General Atlantic, and Teens4Teens link to the homepages given in 07. Dana-Farber has no link because 07 lists none.
-- Sort order is newest first everywhere, as the spec says. That puts the NYC Network Connector (Aug 2026) above General Atlantic (Jul 2026) on `/work`, and ACM (May 2026) above Claude Builders Club (Sep 2025) in the leadership headline cells. Ask for a pinned order if General Atlantic or CBC should lead.
-- The Claude Builders Club summary in 07 is about 300 characters, over the schema's 260 limit. It is reworded to exactly 260 with every fact kept. Rev's "(Northeastern student entrepreneurship)" moved from the org name into its summary.
-- Buildspace is filed under the Boston era because 07 lists it in the Boston table.
-- Pistachio has no stack chips because 07 lists none. Its year (2025) is still marked "(guess)" in 07 section 3, but section 7 no longer asks you to confirm it, so there is no code TODO for it.
+- Sort order is newest first everywhere, as the spec says. That puts the NYC Network Connector (Aug 2026) above General Atlantic (Jul 2026) on `/work`, and ACM (May 2026) first among the leadership cards. Ask for a pinned order if you want General Atlantic or Claude Builders Club to lead.
+- Two summaries were reworded to fit the 260-character limit with every fact kept: Claude Builders Club, and AINU (merged from your three bullets).
 - The X link card uses a generic "@" icon. lucide-react 1.x ships no brand logos, and its `X` icon is a close button.
-- The headshot is live in the Home about strip. `src/assets/headshot.jpg` is a 960x960 centered crop (93 KB) of the original in `docs/overhaul/assets/headshot.jpg`. The build emits AVIF and WebP at 320 and 480 px (6 to 17 KB each), and the image is grayscale until hovered. The 6.9 MB original stays in `docs/` as the master; remove it from git if you want a lighter repo.
+- Photos: the headshot is a 960px square crop of `docs/overhaul/assets/headshot.jpg`. Job photos are square crops and highlights are 4:3 crops, all in `src/assets/`. The build makes AVIF and WebP copies in a few sizes, so visitors download 10 to 60 KB per photo. The originals you sent are not in the repo. The 6.9 MB headshot original is still in `docs/`; delete it from git if you want a lighter repo.
+- `.env.local` lives at the project root, not in `docs/overhaul/`. It's gitignored, and the token never reaches the browser.

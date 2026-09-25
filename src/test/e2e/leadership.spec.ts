@@ -6,7 +6,7 @@ test("three visible groups plus a collapsed details", async ({ page }) => {
     await expect(page.getByRole("heading", { level: 2, name, exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { level: 3, name: "BOSTON" })).toBeVisible();
   await expect(page.getByRole("heading", { level: 3, name: "OAKLAND" })).toBeVisible();
-  await expect(page.locator(".lead-group .cells .cell")).toHaveCount(3);
+  await expect(page.locator(".lead-group .cells .cell")).toHaveCount(5);
 
   const details = page.locator("details.lead-archive");
   await expect(details).not.toHaveAttribute("open", /.*/);

@@ -34,21 +34,48 @@ test("Home shows featured work in compact mode", async ({ page }) => {
   );
 });
 
-test("Home headshot: AVIF, explicit size, lazy, grayscale until hover", async ({ page }) => {
+test("Home headshot: AVIF, 280px, lazy, always in color", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
-  const img = page.getByRole("img", { name: "Mehr Anand", exact: true }).and(page.locator("img"));
+  const img = page.locator(".about__headshot img");
   await img.scrollIntoViewIfNeeded();
-  await expect(img).toHaveAttribute("width", "160");
-  await expect(img).toHaveAttribute("height", "160");
+  await expect(img).toHaveAttribute("alt", "Mehr Anand");
   await expect(img).toHaveAttribute("loading", "lazy");
   await expect
     .poll(() => img.evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth))
     .toBeGreaterThan(0);
   expect(await img.evaluate((el: HTMLImageElement) => el.currentSrc)).toMatch(/\.avif$/);
   const box = await img.boundingBox();
-  expect(Math.round(box!.width)).toBe(160);
-  expect(Math.round(box!.height)).toBe(160);
-  expect(await img.evaluate((el) => getComputedStyle(el).filter)).toBe("grayscale(1)");
-  await img.hover();
-  await expect.poll(() => img.evaluate((el) => getComputedStyle(el).filter)).toBe("none");
+  expect(Math.round(box!.width)).toBe(280);
+  expect(Math.round(box!.height)).toBe(280);
+  expect(await img.evaluate((el) => getComputedStyle(el).filter)).toBe("none");
+});
+
+test("/work shows a photo on the four roles that have one", async ({ page }) => {
+  await page.goto("/work");
+  await expect(page.locator(".xp-row__photo img")).toHaveCount(4);
+  await expect(
+    page.locator(".xp-row", { hasText: "Dana-Farber" }).locator(".xp-row__photo"),
+  ).toHaveCount(0);
+  // NYC Connector is summary-only: no bullet list.
+  await expect(
+    page.locator(".xp-row", { hasText: "NYC Network Connector" }).locator(".xp-row__bullets"),
+  ).toHaveCount(0);
+});
+
+test("Highlights carousel pages with the buttons and never auto-advances", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  const track = page.locator(".highlights__track");
+  const prev = page.getByRole("button", { name: "Previous highlights" });
+  const next = page.getByRole("button", { name: "Next highlights" });
+  await track.scrollIntoViewIfNeeded();
+  await expect(page.locator(".highlight")).toHaveCount(10);
+  await expect(prev).toBeDisabled();
+  const start = await track.evaluate((t) => t.scrollLeft);
+  await page.waitForTimeout(1500);
+  expect(await track.evaluate((t) => t.scrollLeft)).toBe(start);
+  await next.click();
+  await expect.poll(() => track.evaluate((t) => t.scrollLeft)).toBeGreaterThan(start);
+  await expect(prev).toBeEnabled();
 });

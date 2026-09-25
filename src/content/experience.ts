@@ -22,6 +22,8 @@ export const experience: ExperienceInput[] = [
     ],
     stack: ["Azure Data Factory", "Databricks", "Python", "SQL", "MCP", "SharePoint"],
     featured: true,
+    image: "general-atlantic.jpg",
+    imageAlt: "Mehr in the General Atlantic lobby in New York.",
   },
   {
     id: "nyc-connector",
@@ -32,8 +34,10 @@ export const experience: ExperienceInput[] = [
     end: "present",
     kind: "parttime",
     summary: "Connecting co-ops in New York City through culture and experiential events.",
-    bullets: ["Connecting co-ops in New York City through culture and experiential events."],
+    bullets: [],
     stack: [],
+    image: "nyc-connector.jpg",
+    imageAlt: "Northeastern co-op students at Citi Field.",
   },
   {
     id: "brewster",
@@ -53,6 +57,8 @@ export const experience: ExperienceInput[] = [
     ],
     stack: ["Snowflake", "Azure Data Factory", "dbt", "Python", "scikit-learn", "SQL"],
     featured: true,
+    image: "brewster.jpg",
+    imageAlt: "Mehr with two Brewster colleagues in front of a Brewster ambulance.",
   },
   {
     id: "teens4teens",
@@ -70,6 +76,8 @@ export const experience: ExperienceInput[] = [
       "Supported international expansion including the Ghana chapter.",
     ],
     stack: ["Python", "scikit-learn", "Web"],
+    image: "teens4teens.jpg",
+    imageAlt: "Mehr and Teens4Teens volunteers packing supply bags on a New York street.",
   },
   {
     id: "dana-farber",

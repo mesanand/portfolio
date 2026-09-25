@@ -44,8 +44,8 @@ export default function Hero() {
         </motion.p>
         <motion.div className="btn-row hero__actions" {...rise(2)}>
           <BracketButton href="/work">See the work</BracketButton>
-          <BracketButton href="/now" variant="secondary">
-            What I&rsquo;m doing now
+          <BracketButton href="/leadership" variant="secondary">
+            Leadership
           </BracketButton>
         </motion.div>
       </div>

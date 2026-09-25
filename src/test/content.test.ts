@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import * as content from "@/content";
 import { ContentError, parseCollection } from "@/content";
@@ -9,13 +10,12 @@ const collections = {
   experience: content.experience,
   projects: content.projects,
   leadership: content.leadership,
-  now: content.nowEntries,
+  highlights: content.highlights,
 } as const;
 
 /** Every string value anywhere in an object whose key suggests a URL. */
 function urlsIn(value: unknown, key = ""): string[] {
-  if (typeof value === "string")
-    return /url|repo|demo|devpost|video|image/i.test(key) ? [value] : [];
+  if (typeof value === "string") return /url|repo|demo|devpost|video/i.test(key) ? [value] : [];
   if (Array.isArray(value)) return value.flatMap((v) => urlsIn(v, key));
   if (value && typeof value === "object")
     return Object.entries(value).flatMap(([k, v]) => urlsIn(v, k));
@@ -66,7 +66,13 @@ describe("content", () => {
         }
       }
     }
-    for (const e of content.nowEntries) expect(isValidDate(e.date), `${e.id} ${e.date}`).toBe(true);
+  });
+
+  it("every referenced photo exists", () => {
+    for (const e of content.experience)
+      if (e.image) expect(existsSync(`src/assets/work/${e.image}`), e.image).toBe(true);
+    for (const h of content.highlights)
+      expect(existsSync(`src/assets/highlights/${h.image}`), h.image).toBe(true);
   });
 
   it("at most 4 featured entries per collection", () => {

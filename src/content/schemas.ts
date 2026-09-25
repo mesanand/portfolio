@@ -13,9 +13,12 @@ export const Experience = z.object({
   end: isoDate.or(z.literal("present")),
   kind: z.enum(["coop", "internship", "consulting", "nonprofit", "parttime"]),
   summary: z.string().max(220), // one sentence
-  bullets: z.array(z.string()).min(1).max(4),
+  bullets: z.array(z.string()).max(4), // may be empty: some roles are summary-only
   stack: z.array(z.string()).max(8),
   featured: z.boolean().default(false), // shows on Home
+  // Not in 03 s4: an optional photo, a filename under src/assets/work/ (added 2026-09-25).
+  image: z.string().optional(),
+  imageAlt: z.string().optional(),
 });
 
 export const Project = z.object({
@@ -51,17 +54,6 @@ export const Role = z.object({
   era: z.enum(["neu-boston", "neu-oakland", "high-school"]),
 });
 
-export const NowEntry = z.object({
-  id: z.string(), // ulid or yyyy-mm-dd-slug
-  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-  type: z.enum(["linkedin", "shipped", "talk", "note", "press"]),
-  title: z.string().max(120),
-  body: z.string().max(600),
-  url: z.string().url().optional(),
-  image: z.string().url().optional(),
-  tags: z.array(z.string()).max(5).default([]),
-});
-
 // Not in 03 section 4; added by prompt 7 for the Leadership page's honors group.
 export const Honor = z.object({
   year: z.number().int(),
@@ -70,16 +62,27 @@ export const Honor = z.object({
   url: z.string().url().optional(),
 });
 
+// Home "Highlights" carousel, replacing the Now feed (Mehr, 2026-09-25).
+// `image` is a filename under src/assets/highlights/.
+export const Highlight = z.object({
+  id: z.string(),
+  title: z.string().max(80),
+  caption: z.string().max(160),
+  image: z.string(),
+  alt: z.string(),
+  url: z.string().url().optional(),
+});
+
 /** Parsed shapes (defaults applied). */
 export type Experience = z.infer<typeof Experience>;
 export type Project = z.infer<typeof Project>;
 export type Role = z.infer<typeof Role>;
-export type NowEntry = z.infer<typeof NowEntry>;
 export type Honor = z.infer<typeof Honor>;
+export type Highlight = z.infer<typeof Highlight>;
 
 /** Authoring shapes (defaulted fields optional). Content files are typed with these. */
 export type ExperienceInput = z.input<typeof Experience>;
 export type ProjectInput = z.input<typeof Project>;
 export type RoleInput = z.input<typeof Role>;
-export type NowEntryInput = z.input<typeof NowEntry>;
 export type HonorInput = z.input<typeof Honor>;
+export type HighlightInput = z.input<typeof Highlight>;

@@ -728,6 +728,7 @@ main > .section:last-child {
 .xp-row__body {
   display: grid;
   gap: var(--space-3);
+  align-content: start;
   min-width: 0;
 }
 
@@ -802,6 +803,111 @@ main > .section:last-child {
   margin-top: var(--space-2);
 }
 
+/* Work photo: third column on desktop, under the text below 1024px. */
+.xp-row__photo {
+  display: block;
+  width: min(100%, 320px);
+  aspect-ratio: 1;
+}
+
+.xp-row__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 1024px) {
+  .xp-row--photo {
+    grid-template-columns: var(--date-col) minmax(0, 1fr) var(--xp-photo);
+  }
+
+  .xp-row__photo {
+    width: var(--xp-photo);
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Highlights carousel (Home)                                             */
+/* ---------------------------------------------------------------------- */
+.highlights__controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-6);
+  margin-bottom: var(--space-3);
+}
+
+.btn:disabled {
+  color: var(--dash);
+  cursor: default;
+}
+
+.highlights__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(80vw, var(--highlight-w));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0 0 var(--space-3);
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--dash) transparent;
+}
+
+.highlight {
+  scroll-snap-align: start;
+}
+
+.highlight__figure {
+  display: grid;
+  height: 100%;
+  align-content: start;
+  background: var(--surface);
+  border: var(--rule-hair) dashed var(--dash);
+}
+
+.highlight__photo {
+  display: block;
+  aspect-ratio: 4 / 3;
+}
+
+.highlight__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.highlight__text {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-4);
+}
+
+.highlight__title {
+  font: var(--t-h3);
+  color: var(--ink);
+}
+
+.highlight__title a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-hover);
+}
+
+.highlight__title a:hover,
+.highlight__title a:focus-visible,
+.highlight__title a:hover .ext,
+.highlight__title a:focus-visible .ext {
+  color: var(--accent);
+}
+
+.highlight__caption {
+  font: var(--t-body-sm);
+  color: var(--ink-body);
+}
+
 /* ---------------------------------------------------------------------- */
 /* About strip (Home, 02 s8)                                              */
 /* ---------------------------------------------------------------------- */
@@ -814,6 +920,7 @@ main > .section:last-child {
 
 @media (min-width: 640px) {
   .about {
+    --headshot: var(--headshot-lg);
     grid-template-columns: var(--headshot) minmax(0, 1fr);
     gap: var(--space-8);
     align-items: start;
@@ -826,18 +933,11 @@ main > .section:last-child {
   aspect-ratio: 1;
 }
 
-/* 02 s8: square, grayscale at rest, color on hover and focus-within. */
+/* Always in color (Mehr, 2026-09-25; overrides 02 s8 grayscale-at-rest). */
 .about__headshot img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(1);
-  transition: filter var(--dur-hover) var(--ease-hover);
-}
-
-.about__headshot:hover img,
-.about:focus-within .about__headshot img {
-  filter: none;
 }
 
 .about__text {

@@ -28,12 +28,8 @@ Copy `.env.example` to `.env.local` and fill `GITHUB_TOKEN` when working on the 
 
 ## Where content lives
 
-All site copy is data, never JSX. Edit the typed modules in `src/content/` (`site.ts`, `experience.ts`, `projects.ts`, `leadership.ts`, `now.json`). Every file is validated with zod at build time, so a bad entry fails the build instead of rendering blank. Schemas and rules: [03-ARCHITECTURE.md section 4](docs/overhaul/03-ARCHITECTURE.md#4-content-model).
+All site copy is data, never JSX. Edit the typed modules in `src/content/` (`site.ts`, `experience.ts`, `projects.ts`, `leadership.ts`, `highlights.ts`). Every file is validated with zod at build time, so a bad entry fails the build instead of rendering blank. Schemas and rules: [03-ARCHITECTURE.md section 4](docs/overhaul/03-ARCHITECTURE.md#4-content-model).
 
-## Adding a "now" entry
+## Adding a highlight
 
-```sh
-pnpm now "Spoke on the NYC Convocation panel" --type talk --url https://... --tags northeastern,speaking
-```
-
-The script validates the entry, prepends it to `src/content/now.json`, and prints it. Commit and push; Vercel deploys. Other authoring paths (a Claude prompt, the GitHub web editor): [03-ARCHITECTURE.md section 6](docs/overhaul/03-ARCHITECTURE.md#6-the-now-feed-manual-linkedin-substitute).
+The Home page carousel (which replaced the planned `/now` feed) reads `src/content/highlights.ts`. Drop a photo into `src/assets/highlights/` (4:3 works best; the build makes AVIF and WebP sizes), then add an entry with its filename, a title, a caption, and alt text. Order in the file is the order on the page.

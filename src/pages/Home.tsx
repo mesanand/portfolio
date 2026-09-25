@@ -2,13 +2,14 @@ import AsciiDivider from "@/components/AsciiDivider";
 import BracketButton from "@/components/BracketButton";
 import ExperienceRow from "@/components/ExperienceRow";
 import Hero from "@/components/Hero";
+import Highlights from "@/components/Highlights";
 import LinkCard from "@/components/LinkCard";
 import ProjectCell from "@/components/ProjectCell";
 import Section, { SectionHead } from "@/components/Section";
-import { experience, projects } from "@/content";
-import headshotAvif from "@/assets/headshot.jpg?w=320;480&format=avif&as=srcset";
-import headshotWebpSet from "@/assets/headshot.jpg?w=320;480&format=webp&as=srcset";
-import headshotFallback from "@/assets/headshot.jpg?w=320&format=webp";
+import { experience, highlights, projects } from "@/content";
+import headshotAvif from "@/assets/headshot.jpg?w=320;560;840&format=avif&as=srcset";
+import headshotWebpSet from "@/assets/headshot.jpg?w=320;560;840&format=webp&as=srcset";
+import headshotFallback from "@/assets/headshot.jpg?w=560&format=webp";
 import { site } from "@/content/site";
 
 const featuredWork = experience.filter((e) => e.featured);
@@ -20,21 +21,30 @@ export default function Home() {
       <Hero />
       <AsciiDivider seed={1984} />
 
-      <Section id="now" labelledBy="home-now">
-        <SectionHead eyebrow="// NOW" title="What I'm doing this month" id="home-now" />
+      <Section id="highlights" labelledBy="home-highlights">
+        <SectionHead eyebrow="// HIGHLIGHTS" title="Highlights" id="home-highlights" />
+        <Highlights items={highlights} />
       </Section>
 
       <Section id="work" labelledBy="home-work">
         <SectionHead eyebrow="// WORK" title="Selected work" id="home-work" />
         <div className="about">
           <picture className="about__headshot">
-            <source type="image/avif" srcSet={headshotAvif} sizes="160px" />
-            <source type="image/webp" srcSet={headshotWebpSet} sizes="160px" />
+            <source
+              type="image/avif"
+              srcSet={headshotAvif}
+              sizes="(min-width: 640px) 280px, 200px"
+            />
+            <source
+              type="image/webp"
+              srcSet={headshotWebpSet}
+              sizes="(min-width: 640px) 280px, 200px"
+            />
             <img
               src={headshotFallback}
               alt="Mehr Anand"
-              width={160}
-              height={160}
+              width={280}
+              height={280}
               loading="lazy"
               decoding="async"
             />
