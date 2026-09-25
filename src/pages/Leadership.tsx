@@ -85,7 +85,7 @@ export default function Leadership() {
 
       {archive.length > 0 && (
         <details className="lead-archive">
-          <summary className="lead-archive__summary">High school, 2021 to 2023</summary>
+          <summary className="lead-archive__summary">From high school, 2021 to 2023</summary>
           <ul className="role-lines" role="list">
             {archive.map(line)}
           </ul>

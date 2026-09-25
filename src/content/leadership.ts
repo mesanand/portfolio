@@ -214,7 +214,8 @@ export const leadership: RoleInput[] = [
     start: "2022-09",
     end: "2023-05",
     tier: "archive",
-    summary: "Raised funding for a makerspace; keynote at the iSTEAM fair.",
+    summary:
+      "Raised thousands to build and use a new makerspace. Made tie clips for every faculty member, sold hundreds of custom prints to students, and was the main speaker at the iSTEAM fair.",
     era: "high-school",
   },
   {
@@ -224,7 +225,8 @@ export const leadership: RoleInput[] = [
     start: "2021-01",
     end: "2023-05",
     tier: "archive",
-    summary: "Started the school's first hydroponics lab in an abandoned research room.",
+    summary:
+      "Started the school's first hydroponics club in an abandoned fourth-floor research lab. Raised thousands in funding and grew kale, lettuce, spinach, and peppers; seniors later used the automated system for their volunteer projects.",
     era: "high-school",
   },
   {
@@ -234,7 +236,8 @@ export const leadership: RoleInput[] = [
     start: "2022-09",
     end: "2023-05",
     tier: "archive",
-    summary: "Fielded a national competition team; workshops became a class.",
+    summary:
+      "Built a team for the national high school cybersecurity competition. Hosted sessions and workshops teaching the basics, which eventually became a full class.",
     era: "high-school",
   },
   {
@@ -244,17 +247,19 @@ export const leadership: RoleInput[] = [
     start: "2022-09",
     end: "2023-05",
     tier: "archive",
-    summary: "Pushed for APCS, cybersecurity honors, and digital illustration in the curriculum.",
+    summary:
+      "Created classes, Discord servers, and other resources for students learning the basics of computer science, alongside pushing for a stronger curriculum: AP Computer Science, cybersecurity honors, and digital illustration.",
     era: "high-school",
   },
   {
     id: "hs-fptv",
-    org: "FPTV",
+    org: "FPTV Club",
     role: "Co-President",
     start: "2022-09",
     end: "2023-05",
     tier: "archive",
-    summary: "Student media: skits, editing, social.",
+    summary:
+      "Acted in skits and scenes for the podcast, helped with cinematography and editing, and came up with social media ideas for the Fordham community.",
     era: "high-school",
   },
 ];

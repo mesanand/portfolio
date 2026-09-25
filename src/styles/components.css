@@ -586,13 +586,10 @@ main > .section:last-child {
   }
 }
 
+/* Phones: everything stacks; descriptions stay visible (Mehr, 2026-09-25). */
 @media (max-width: 639.98px) {
   .role-line {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .role-line__summary {
-    display: none;
   }
 }
 
