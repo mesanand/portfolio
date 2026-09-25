@@ -36,6 +36,30 @@ export const life: LifePhotoInput[] = [
     alt: "Mehr with the fencing club in a group photo.",
   },
   {
+    id: "yankee-stadium",
+    title: "Yankee Stadium",
+    image: "yankee-stadium.jpg",
+    alt: "Mehr taking a selfie with another fan at Yankee Stadium.",
+  },
+  {
+    id: "subway-selfie",
+    title: "Subway selfie",
+    image: "subway-selfie.jpg",
+    alt: "Mehr taking a group selfie with friends in a subway station.",
+  },
+  {
+    id: "lecture-hall",
+    title: "Lecture hall",
+    image: "lecture-hall.jpg",
+    alt: "Mehr laughing in a lecture hall.",
+  },
+  {
+    id: "group-dinner",
+    title: "Group dinner",
+    image: "group-dinner.jpg",
+    alt: "Mehr at a long dinner table with a large group of friends.",
+  },
+  {
     id: "techcrunch-disrupt",
     title: "TechCrunch Disrupt",
     image: "techcrunch-disrupt.jpg",
@@ -76,5 +100,11 @@ export const life: LifePhotoInput[] = [
     title: "High school",
     image: "high-school.jpg",
     alt: "Mehr with a large group of high school students at an evening event.",
+  },
+  {
+    id: "park-with-shourya",
+    title: "Park with Shourya",
+    image: "park.jpg",
+    alt: "Mehr with his friend Shourya under the trees in a park.",
   },
 ];
