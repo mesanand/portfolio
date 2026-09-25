@@ -7,6 +7,10 @@ test("three visible groups plus a collapsed details", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 3, name: "BOSTON" })).toBeVisible();
   await expect(page.getByRole("heading", { level: 3, name: "OAKLAND" })).toBeVisible();
   await expect(page.locator(".lead-group .cells .cell")).toHaveCount(4);
+  // Each current card shows its org logo, decorative (the name is already the heading).
+  const logos = page.locator(".lead-group .cells .cell__logo");
+  await expect(logos).toHaveCount(4);
+  for (const img of await logos.all()) await expect(img).toHaveAttribute("alt", "");
 
   const details = page.locator("details.lead-archive");
   await expect(details).not.toHaveAttribute("open", /.*/);

@@ -183,6 +183,8 @@
   --headshot-lg: 280px;
   --xp-photo: 240px; /* work photo column */
   --carousel-w: 380px; /* carousel card width, desktop */
+  --logo-size: 72px; /* org logo box on leadership cards */
+  --logo-size-sm: 56px; /* same, on phones */
   --gh-cell: 10px; /* 5.10 heatmap square */
   --gh-gap: 3px;
   --gh-label-w: 32px; /* weekday label column */

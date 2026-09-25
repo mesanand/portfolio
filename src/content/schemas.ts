@@ -52,6 +52,8 @@ export const Role = z.object({
   summary: z.string().max(260).optional(),
   metrics: z.array(z.string()).max(3).optional(), // "150+ members", "$50K raised"
   era: z.enum(["neu-boston", "neu-oakland", "high-school"]),
+  // Not in 03 s4: org logo, a filename under src/assets/logos/ (headline cards only; Mehr, 2026-09-25).
+  logo: z.string().optional(),
 });
 
 // Not in 03 section 4; added by prompt 7 for the Leadership page's honors group.

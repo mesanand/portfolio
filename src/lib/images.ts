@@ -55,6 +55,15 @@ export const lifePhotos: Sets = collect(
   }),
 );
 
+// Organization logos (transparent PNG, 256px) for headline leadership cards; 2x of the 72px box.
+export const logos: Record<string, string> = byName(
+  import.meta.glob<string>("/src/assets/logos/*.png", {
+    query: { w: "144", format: "webp" },
+    import: "default",
+    eager: true,
+  }),
+);
+
 // Link-preview thumbnails for Highlights, stored at 1200x630 by `pnpm highlight`.
 export const highlightThumbs: Sets = collect(
   import.meta.glob<string>("/src/assets/highlights/*.jpg", {

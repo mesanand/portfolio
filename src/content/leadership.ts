@@ -21,6 +21,7 @@ export const leadership: RoleInput[] = [
       "Founded and advise Northeastern's official Anthropic chapter: 150+ at kickoff, 200+ members now. Co-organized the Spring 2026 Revolve x Claude Builders hackathon on 78 campuses and HACK1984 (36 hours, 100 seats, Boston, Nov 6-8 2026) with Rev, ACM, and AINU.",
     metrics: ["200+ members", "78-campus hackathon", "HACK1984"],
     era: "neu-boston",
+    logo: "claude-builders-club.png",
   },
   {
     id: "acm",
@@ -35,6 +36,7 @@ export const leadership: RoleInput[] = [
       "Growth and partnerships for Northeastern's ACM chapter: employer outreach, faculty recruitment for a software engineering course, and recurring operations and strategy.",
     metrics: ["30 members"],
     era: "neu-boston",
+    logo: "acm.png",
   },
   {
     id: "rev",
@@ -49,6 +51,7 @@ export const leadership: RoleInput[] = [
       "Northeastern's student entrepreneurship community. Cohort member (Spring 2025), e-board (Fall 2025), Director of Growth (Spring 2026), now Alumni Corps. Startups from Rev have a combined value of $11B+.",
     metrics: ["$11B+ combined startup value"],
     era: "neu-boston",
+    logo: "rev.png",
   },
 
   // --- Supporting tier, Boston (dates confirmed from LinkedIn, 2026-09-25) ---
@@ -88,6 +91,7 @@ export const leadership: RoleInput[] = [
     summary:
       "Got the group through SGA recognition, built automations, and directed the website build. VP roles Jan 2025 to Feb 2026, advisor since.",
     era: "neu-boston",
+    logo: "nibg.png",
   },
   {
     id: "ainu",

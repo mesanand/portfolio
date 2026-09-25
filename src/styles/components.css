@@ -448,6 +448,42 @@ main > .section:last-child {
   gap: 0 var(--space-6);
 }
 
+/* Header of a card: text on the left; an optional logo centered in the space to its right. */
+.cell__top {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.cell__top-text {
+  display: grid;
+  gap: var(--space-6); /* same rhythm as the rest of .cell */
+  align-content: start;
+}
+
+.cell__top--logo {
+  grid-template-columns: minmax(0, 1.4fr) minmax(var(--logo-size), 1fr);
+  align-items: center;
+}
+
+.cell__logo {
+  justify-self: center;
+  width: var(--logo-size);
+  height: var(--logo-size);
+  object-fit: contain;
+}
+
+/* Phones: the text keeps the width; the logo takes only what it needs. */
+@media (max-width: 639.98px) {
+  .cell__top--logo {
+    grid-template-columns: minmax(0, 1fr) var(--logo-size-sm);
+  }
+
+  .cell__logo {
+    width: var(--logo-size-sm);
+    height: var(--logo-size-sm);
+  }
+}
+
 .cell__metrics {
   margin-top: auto;
 }
