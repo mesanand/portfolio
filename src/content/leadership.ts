@@ -193,7 +193,7 @@ export const leadership: RoleInput[] = [
     tier: "supporting",
     summary:
       "Reviewed constitutions and bylaws for 500+ organizations under the director of student involvement. Took meeting notes and organized information for several members of the board.",
-    era: "neu-oakland",
+    era: "neu-boston",
   },
   {
     id: "pawhacks",
