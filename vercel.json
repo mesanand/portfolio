@@ -5,6 +5,10 @@
       "destination": "https://network.mehr-anand.com/network"
     },
     {
+      "source": "/network/",
+      "destination": "https://network.mehr-anand.com/network/"
+    },
+    {
       "source": "/network/:path*",
       "destination": "https://network.mehr-anand.com/network/:path*"
     },
