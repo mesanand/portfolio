@@ -131,11 +131,6 @@ function MenuOverlay({ onClose }: MenuOverlayProps) {
               </NavLink>
             </motion.li>
           ))}
-          <motion.li variants={item} className="menu-overlay__resume">
-            <BracketButton href={site.resumeUrl} newTab>
-              Resume
-            </BracketButton>
-          </motion.li>
         </motion.ul>
       </nav>
     </motion.div>
@@ -167,9 +162,6 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <BracketButton href={site.resumeUrl} newTab size="sm">
-            Resume
-          </BracketButton>
         </nav>
         <BracketButton
           ref={menuButtonRef}

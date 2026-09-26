@@ -18,7 +18,8 @@ export interface Site {
   whereList: readonly string[];
   email: string;
   location: string;
-  resumeUrl: string;
+  /** No public resume (Mehr's choice); this opens an email asking for it. */
+  resumeRequestUrl: string;
   /** Booking page, shown as [ BOOK TIME ]. */
   calendarUrl: string | null;
   socials: readonly Social[];
@@ -39,8 +40,7 @@ export const site: Site = {
   whereList: ["NEW YORK CITY", "NORTHEASTERN '27", "GENERAL ATLANTIC (NOW)"],
   email: EMAIL,
   location: "New York, NY",
-  // TODO(mehr): drop the current resume PDF into public/resume.pdf before launch.
-  resumeUrl: "/resume.pdf",
+  resumeRequestUrl: `mailto:${EMAIL}?subject=${encodeURIComponent("Resume request")}`,
   calendarUrl:
     "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2dC0LYsc25DgnScLInAsIlx61Dd7Ub0ZEy8oe9X47o2IaN-c8JmLq-tOqM89ZzXB6aHKE2rpdP",
   socials: [

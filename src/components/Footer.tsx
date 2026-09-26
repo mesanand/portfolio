@@ -24,16 +24,6 @@ export default function Footer() {
                   </NavLink>
                 </li>
               ))}
-              <li>
-                <a
-                  href={site.resumeUrl}
-                  className="nav-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  RESUME
-                </a>
-              </li>
             </ul>
           </nav>
           <div className="link-cards link-cards--stack">

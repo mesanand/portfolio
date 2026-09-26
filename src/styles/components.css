@@ -111,7 +111,7 @@ main:focus {
   }
 }
 
-/* Six nav items + RESUME need ~900px; below that, the [ MENU ] overlay takes over. */
+/* Five nav items need ~800px; below 900px the [ MENU ] overlay takes over. */
 @media (max-width: 899.98px) {
   .site-nav {
     display: none;
@@ -163,10 +163,6 @@ main:focus {
 .menu-overlay__link:hover,
 .menu-overlay__link:focus-visible {
   color: var(--accent);
-}
-
-.menu-overlay__resume {
-  margin-top: var(--space-6);
 }
 
 /* ---------------------------------------------------------------------- */

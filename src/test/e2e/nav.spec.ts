@@ -11,7 +11,7 @@ const focusedName = (page: Page) =>
 test.describe("desktop", () => {
   test.use({ viewport: { width: 1280, height: 800 } });
 
-  test("tab order: skip link, wordmark, nav items, resume", async ({ page }) => {
+  test("tab order: skip link, wordmark, nav items", async ({ page }) => {
     await page.goto("/");
     const expected = [
       "Skip to content",
@@ -21,7 +21,6 @@ test.describe("desktop", () => {
       "LEADERSHIP",
       "HIGHLIGHTS",
       "MY NETWORK",
-      "Resume",
     ];
     const seen: string[] = [];
     for (let i = 0; i < expected.length; i++) {
@@ -106,4 +105,16 @@ test.describe("frame", () => {
     await page.reload();
     await expect(page.locator("main h1")).toHaveText("Nothing at this address.");
   });
+});
+
+test("no resume link anywhere; Request my resume opens a prefilled email", async ({ page }) => {
+  for (const path of ["/", "/work"]) {
+    await page.goto(path);
+    await expect(page.locator('a[href*="resume.pdf"]')).toHaveCount(0);
+    await expect(page.locator("header").getByText(/resume/i)).toHaveCount(0);
+    await expect(page.getByRole("link", { name: "Request my resume" })).toHaveAttribute(
+      "href",
+      "mailto:anand.me@northeastern.edu?subject=Resume%20request",
+    );
+  }
 });

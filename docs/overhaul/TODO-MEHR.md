@@ -6,7 +6,6 @@ What the build still needs from you. `07-ANSWERS.md` (including its section 9, t
 
 ## Before launch
 
-- [ ] **Resume PDF.** Put the current resume at `public/resume.pdf`. The header `[ RESUME ]` button links there and 404s until the file exists. (`src/content/site.ts`)
 - [ ] **Review the Highlights (`/highlights`).** Seven were added from what's public: the Khoury 2026 convocation article, two Northeastern Global News articles (2024 Experiential Treks, where you're quoted; 2023 move-in photos), and four of your LinkedIn posts. Delete any you don't want from `src/content/highlights.json`. The two older NGN thumbnails are the articles' own preview photos and don't show you; swap one with `pnpm highlight <url> --image your-photo.jpg` after deleting its entry. LinkedIn titles are your posts' first sentences, exclamation points included.
 - [ ] **NYC Network Connector start month.** Set to `2026-08`, a guess from the LinkedIn post date. (`src/content/experience.ts`)
 - [ ] **PEVC start month.** Set to `2026-01`, a guess. (`src/content/leadership.ts`)

@@ -14,7 +14,7 @@ interface CommonProps {
 type LinkProps = CommonProps &
   Omit<ComponentPropsWithRef<"a">, "href" | "className" | "children"> & {
     href: string;
-    /** Open in a new tab even for a same-origin URL (e.g. the resume PDF). */
+    /** Open in a new tab even for a same-origin URL. */
     newTab?: boolean;
   };
 

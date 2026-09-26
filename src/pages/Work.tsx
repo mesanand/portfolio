@@ -1,4 +1,5 @@
 import ExperienceRow from "@/components/ExperienceRow";
+import BracketButton from "@/components/BracketButton";
 import Section, { SectionHead } from "@/components/Section";
 import { experience } from "@/content";
 import { site } from "@/content/site";
@@ -16,7 +17,11 @@ export default function Work() {
         level={1}
         id="work-title"
         lede={firstSentences(site.about, 2)}
-      />
+      >
+        <BracketButton href={site.resumeRequestUrl} variant="secondary">
+          Request my resume
+        </BracketButton>
+      </SectionHead>
       {[
         { label: "NOW", id: "work-now", rows: current },
         { label: "PREVIOUSLY", id: "work-previously", rows: previous },

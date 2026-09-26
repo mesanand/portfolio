@@ -105,11 +105,12 @@ export default function Home() {
             <LinkCard key={s.url} icon={s.icon} title={s.label} subtitle={s.handle} href={s.url} />
           ))}
         </div>
-        {site.calendarUrl && (
-          <div className="section-foot">
-            <BracketButton href={site.calendarUrl}>Book time</BracketButton>
-          </div>
-        )}
+        <div className="section-foot btn-row">
+          {site.calendarUrl && <BracketButton href={site.calendarUrl}>Book time</BracketButton>}
+          <BracketButton href={site.resumeRequestUrl} variant="secondary">
+            Request my resume
+          </BracketButton>
+        </div>
       </Section>
 
       <AsciiDivider seed={2027} />
