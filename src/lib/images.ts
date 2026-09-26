@@ -55,10 +55,10 @@ export const lifePhotos: Sets = collect(
   }),
 );
 
-// Organization logos (transparent PNG, 256px) for headline leadership cards; 2x of the 72px box.
+// Organization logos (transparent PNG, 256px tall) for headline leadership cards; 2x of the 72px height.
 export const logos: Record<string, string> = byName(
   import.meta.glob<string>("/src/assets/logos/*.png", {
-    query: { w: "144", format: "webp" },
+    query: { h: "144", format: "webp" },
     import: "default",
     eager: true,
   }),

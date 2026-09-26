@@ -49,7 +49,6 @@ export default function RoleCell({ role, index }: RoleCellProps) {
             className="cell__logo"
             src={logo}
             alt=""
-            width={72}
             height={72}
             loading="lazy"
             decoding="async"

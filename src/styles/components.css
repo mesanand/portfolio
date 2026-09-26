@@ -465,22 +465,24 @@ main > .section:last-child {
   align-items: center;
 }
 
+/* Same height for every logo; wide ones (ACM) get up to twice that in width. */
 .cell__logo {
   justify-self: center;
-  width: var(--logo-size);
+  width: auto;
   height: var(--logo-size);
+  max-width: min(100%, calc(var(--logo-size) * 2));
   object-fit: contain;
 }
 
 /* Phones: the text keeps the width; the logo takes only what it needs. */
 @media (max-width: 639.98px) {
   .cell__top--logo {
-    grid-template-columns: minmax(0, 1fr) var(--logo-size-sm);
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 
   .cell__logo {
-    width: var(--logo-size-sm);
     height: var(--logo-size-sm);
+    max-width: calc(var(--logo-size-sm) * 2);
   }
 }
 
