@@ -19,7 +19,7 @@ export const leadership: RoleInput[] = [
     // Reworded from 07 to fit the 260-character schema limit; same facts.
     summary:
       "Founded and advise Northeastern's official Anthropic chapter: 150+ at kickoff, 200+ members now. Co-organized the Spring 2026 Revolve x Claude Builders hackathon on 78 campuses and HACK1984 (36 hours, 100 seats, Boston, Nov 6-8 2026) with Rev, ACM, and AINU.",
-    metrics: ["200+ members", "78-campus hackathon", "HACK1984"],
+    metrics: ["200+ members", "Education", "HACK1984"],
     era: "neu-boston",
     logo: "claude-builders-club.png",
   },
@@ -34,7 +34,7 @@ export const leadership: RoleInput[] = [
     tier: "headline",
     summary:
       "Growth and partnerships for Northeastern's ACM chapter: employer outreach, faculty recruitment for a software engineering course, and recurring operations and strategy.",
-    metrics: ["30 members"],
+    metrics: ["30 members", "HACK1984", "Software consulting"],
     era: "neu-boston",
     logo: "acm.png",
   },
@@ -49,7 +49,7 @@ export const leadership: RoleInput[] = [
     tier: "headline",
     summary:
       "Northeastern's student entrepreneurship community. Cohort member (Spring 2025), e-board (Fall 2025), Director of Growth (Spring 2026), now Alumni Corps. Startups from Rev have a combined value of $11B+.",
-    metrics: ["$11B+ combined startup value"],
+    metrics: ["$11B+ combined startup value", "HACK1984", "Community"],
     era: "neu-boston",
     logo: "rev.png",
   },

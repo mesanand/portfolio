@@ -1,5 +1,33 @@
 [
   {
+    "id": "2024-04-northeastern-experiential-treks",
+    "kind": "article",
+    "title": "Northeastern Experiential Treks",
+    "source": "Northeastern E-Treks",
+    "date": "2024-04",
+    "url": "https://etreks.sites.northeastern.edu/topic-1/",
+    "image": "2024-04-northeastern-experiential-treks.jpg",
+    "note": "Northeastern's industry trek program. I visited SAP, Kaiser Permanente, and YEP with it in 2023–24."
+  },
+  {
+    "id": "2025-10-22-ircai-supports-the-global-haickathon-empowering",
+    "kind": "article",
+    "title": "IRCAI Supports the Global HAIckathon: Empowering AI Innovators Worldwide",
+    "source": "IRCAI",
+    "date": "2025-10-22",
+    "url": "https://ircai.org/ircai-supports-the-global-haickathon-empowering-ai-innovators-worldwide/",
+    "image": "2025-10-22-ircai-supports-the-global-haickathon-empowering.jpg",
+    "note": "The Global HAIckathon, Nov 8–9, 2025: online and in person across cities including Boston, London, and Berlin."
+  },
+  {
+    "id": "marketwatch-ai-double-standard",
+    "kind": "article",
+    "title": "Teachers ban it, employers demand it: New grads face a double standard around AI",
+    "source": "MarketWatch",
+    "url": "https://www.marketwatch.com/story/teachers-ban-it-employers-demand-it-new-grads-face-a-frustrating-ai-double-standard-09c70f19",
+    "date": "2026-06"
+  },
+  {
     "id": "2025-02-18-going-three-for-three---2000",
     "kind": "post",
     "title": "Going three for three -> $2000.",
