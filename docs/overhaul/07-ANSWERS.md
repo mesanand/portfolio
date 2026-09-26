@@ -238,6 +238,9 @@ Entries with "(Mehr: fill in)" ship with `title: "LinkedIn post"` and an empty b
 - **Home has no Projects section** (Mehr): projects live only on /projects (nav link stays). `featured` on projects no longer affects anything.
 - **Hero tagline** (also the footer bio): "Data Engineer, GTM strategist, AI consultant. I ship pipelines by day and communities by night."
 - **High school clubs:** fuller descriptions from Mehr for 3D Printing, Hydroponics, Cybersecurity, Computer Science, and FPTV Club (names Fordham, at his wording). The collapsed section reads "From high school, 2021 to 2023".
+- **Slice of my life moves** (overrides 02 s1.7 again): a slow, seamless, full-bleed marquee; pauses on hover, keyboard focus, and a PAUSE/PLAY button; reduced motion gets the still scroll row with arrows.
+- **My Network** (`/network`, nav between HIGHLIGHTS and RESUME): placeholder for Mehr's CRM ("The Tower"), which will live inside mehr-anand.com as a section, not a separate site.
+- **SGA SOG Board** is Boston era.
 - **Org links:** Rev https://www.rev.school/, ACM https://nuacm-website-euf7.vercel.app/, AINU https://ainortheastern.com/, PEVC https://www.northeasternpevc.org/, NIBG https://www.linkedin.com/company/northeastern-investment-banking-group/, Huntington Angels Network https://huntingtonangelsnetwork.com/, Kaleidoscope https://www.linkedin.com/company/nukhourykaleidoscope/, COSMO https://www.linkedin.com/company/neu-cosmo/, Claude Builders Club https://claudeneu.com/.
 - **Oakland clubs:** Hydroponics, Robotics, and Bullet Journaling ran Sep 2023 to May 2024 (not May 2025).
 - **Hero motion (overrides 02 s1.7 "nothing loops"):** the scanlines drift slowly, and a strip of gold pixels flickers along the hero's bottom edge (`PixelField`, canvas). Both stop under prefers-reduced-motion; the pixels pause off screen.

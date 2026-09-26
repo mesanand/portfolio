@@ -63,22 +63,47 @@ test("/work shows a photo on the four roles that have one", async ({ page }) => 
   ).toHaveCount(0);
 });
 
-test("Slice of my life carousel pages with the buttons and never auto-advances", async ({
-  page,
-}) => {
+test("Slice of my life drifts, pauses on hover and with the PAUSE button", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
-  const track = page.locator(".carousel__track");
-  const prev = page.getByRole("button", { name: "Previous photos" });
-  const next = page.getByRole("button", { name: "Next photos" });
-  await track.scrollIntoViewIfNeeded();
-  await expect(page.locator(".carousel-card")).toHaveCount(17);
-  await expect(page.locator(".carousel-card figcaption")).toHaveCount(0);
-  await expect(prev).toBeDisabled();
-  const start = await track.evaluate((t) => t.scrollLeft);
-  await page.waitForTimeout(1500);
-  expect(await track.evaluate((t) => t.scrollLeft)).toBe(start);
-  await next.click();
-  await expect.poll(() => track.evaluate((t) => t.scrollLeft)).toBeGreaterThan(start);
-  await expect(prev).toBeEnabled();
+  const viewport = page.locator(".carousel__viewport");
+  const strip = page.locator(".carousel__strip");
+  await viewport.scrollIntoViewIfNeeded();
+  // The photo list is rendered twice for a seamless loop; the copy is hidden from assistive tech.
+  await expect(page.locator(".carousel__set").first().locator(".carousel-card")).toHaveCount(17);
+  await expect(page.locator(".carousel__set").nth(1)).toHaveAttribute("aria-hidden", "true");
+  const x = () => strip.evaluate((el) => new DOMMatrix(getComputedStyle(el).transform).m41);
+  await page.mouse.move(0, 0);
+  const a = await x();
+  await page.waitForTimeout(700);
+  expect(await x()).toBeLessThan(a); // moving left
+
+  await viewport.hover();
+  await page.waitForTimeout(200);
+  const h1 = await x();
+  await page.waitForTimeout(500);
+  expect(await x()).toBe(h1); // paused while hovered
+
+  await page.mouse.move(0, 0);
+  const pause = page.getByRole("button", { name: "Pause" });
+  await pause.click();
+  await expect(page.getByRole("button", { name: "Play" })).toHaveAttribute("aria-pressed", "true");
+  await page.mouse.move(0, 0);
+  const p1 = await x();
+  await page.waitForTimeout(500);
+  expect(await x()).toBe(p1); // paused by the button
+});
+
+test.describe("reduced motion", () => {
+  test.use({ reducedMotion: "reduce" });
+  test("Slice of my life is a still, swipeable row with arrows", async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto("/");
+    await expect(page.locator(".carousel__strip")).toHaveCount(0);
+    const track = page.locator(".carousel__track");
+    await expect(track.locator(".carousel-card")).toHaveCount(17);
+    await expect(page.getByRole("button", { name: "Previous photos" })).toBeDisabled();
+    await page.getByRole("button", { name: "Next photos" }).click();
+    await expect.poll(() => track.evaluate((t) => t.scrollLeft)).toBeGreaterThan(0);
+  });
 });

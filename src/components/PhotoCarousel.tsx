@@ -1,19 +1,81 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import { useReducedMotion } from "motion/react";
 import BracketButton from "@/components/BracketButton";
 import Photo from "@/components/Photo";
 import type { LifePhoto } from "@/content/schemas";
 import { lifePhotos } from "@/lib/images";
 
+const SECONDS_PER_PHOTO = 6; // drift speed: one card width every ~6s
+
+function Card({ photo, hidden = false }: { photo: LifePhoto; hidden?: boolean }) {
+  const set = lifePhotos[photo.image];
+  return (
+    <li className="carousel-card" aria-hidden={hidden || undefined}>
+      <figure className="carousel-card__figure">
+        {set && (
+          <Photo
+            className="carousel-card__photo"
+            set={set}
+            alt={hidden ? "" : photo.alt}
+            width={400}
+            height={300}
+            sizes="(min-width: 640px) 380px, 80vw"
+          />
+        )}
+      </figure>
+    </li>
+  );
+}
+
 /**
- * Horizontal, scroll-snapped strip of photo cards. Swipe on touch; the
- * bracket buttons page through on desktop. Never auto-advances (02 s1.7).
+ * "Slice of my life" (Mehr, 2026-09-25). A continuously drifting marquee: the
+ * photo list is rendered twice and the strip slides left by exactly one copy,
+ * so it loops seamlessly. Transform-only (compositor). Pauses on hover and on
+ * keyboard focus, and has a PAUSE/PLAY control (WCAG 2.2.2). Under
+ * prefers-reduced-motion it is the scroll-snap row with arrow buttons instead.
  */
 export default function PhotoCarousel({ items }: { items: readonly LifePhoto[] }) {
+  const reduce = useReducedMotion();
+  const [paused, setPaused] = useState(false);
+
+  if (reduce) return <ScrollRow items={items} />;
+
+  const style = { "--marquee-duration": `${items.length * SECONDS_PER_PHOTO}s` } as CSSProperties;
+  return (
+    <div className="carousel carousel--marquee" data-paused={paused}>
+      <div className="carousel__controls">
+        <BracketButton size="sm" onClick={() => setPaused((p) => !p)} aria-pressed={paused}>
+          {paused ? "Play" : "Pause"}
+        </BracketButton>
+      </div>
+      <div
+        className="carousel__viewport"
+        tabIndex={0}
+        role="region"
+        aria-label="Slice of my life photos, moving slowly; hover or focus to pause"
+      >
+        <div className="carousel__strip" style={style}>
+          <ul className="carousel__set" role="list">
+            {items.map((p) => (
+              <Card key={p.id} photo={p} />
+            ))}
+          </ul>
+          <ul className="carousel__set" role="list" aria-hidden="true">
+            {items.map((p) => (
+              <Card key={p.id} photo={p} hidden />
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** Reduced-motion fallback: a swipeable scroll-snap row with arrow buttons. */
+function ScrollRow({ items }: { items: readonly LifePhoto[] }) {
   const trackRef = useRef<HTMLUListElement>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
-  const reduce = useReducedMotion();
 
   const measure = useCallback(() => {
     const t = trackRef.current;
@@ -38,8 +100,7 @@ export default function PhotoCarousel({ items }: { items: readonly LifePhoto[] }
 
   const page = (dir: -1 | 1) => {
     const t = trackRef.current;
-    if (!t) return;
-    t.scrollBy({ left: dir * t.clientWidth * 0.9, behavior: reduce ? "auto" : "smooth" });
+    if (t) t.scrollBy({ left: dir * t.clientWidth * 0.9, behavior: "auto" });
   };
 
   return (
@@ -64,25 +125,9 @@ export default function PhotoCarousel({ items }: { items: readonly LifePhoto[] }
         tabIndex={0}
         aria-label="Slice of my life (scrolls sideways)"
       >
-        {items.map((h) => {
-          const set = lifePhotos[h.image];
-          return (
-            <li key={h.id} className="carousel-card">
-              <figure className="carousel-card__figure">
-                {set && (
-                  <Photo
-                    className="carousel-card__photo"
-                    set={set}
-                    alt={h.alt}
-                    width={400}
-                    height={300}
-                    sizes="(min-width: 640px) 380px, 80vw"
-                  />
-                )}
-              </figure>
-            </li>
-          );
-        })}
+        {items.map((p) => (
+          <Card key={p.id} photo={p} />
+        ))}
       </ul>
     </div>
   );

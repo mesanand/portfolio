@@ -20,6 +20,7 @@ test.describe("desktop", () => {
       "PROJECTS",
       "LEADERSHIP",
       "HIGHLIGHTS",
+      "MY NETWORK",
       "Resume",
     ];
     const seen: string[] = [];
@@ -82,14 +83,14 @@ test.describe("phone menu", () => {
   test("navigating from the menu closes it", async ({ page }) => {
     await page.goto("/");
     await page.getByRole("button", { name: "Menu" }).click();
-    await page.getByRole("dialog").getByRole("link", { name: "WORK" }).click();
+    await page.getByRole("dialog").getByRole("link", { name: "WORK", exact: true }).click();
     await expect(page).toHaveURL(/\/work$/);
     await expect(page.getByRole("dialog")).toBeHidden();
   });
 });
 
 test.describe("frame", () => {
-  for (const path of ["/", "/work", "/projects", "/leadership", "/highlights"]) {
+  for (const path of ["/", "/work", "/projects", "/leadership", "/highlights", "/network"]) {
     test(`${path} renders inside the frame`, async ({ page }) => {
       await page.goto(path);
       await expect(page.locator("header.site-header")).toBeVisible();
