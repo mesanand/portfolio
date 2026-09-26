@@ -17,11 +17,17 @@ export default function Footer() {
           </div>
           <nav className="site-footer__nav" aria-label="Footer">
             <ul role="list">
-              {NAV_ITEMS.map(({ label, to }) => (
+              {NAV_ITEMS.map(({ label, to, external }) => (
                 <li key={to}>
-                  <NavLink to={to} className="nav-link">
-                    {label}
-                  </NavLink>
+                  {external ? (
+                    <a href={to} className="nav-link">
+                      {label}
+                    </a>
+                  ) : (
+                    <NavLink to={to} className="nav-link">
+                      {label}
+                    </NavLink>
+                  )}
                 </li>
               ))}
             </ul>

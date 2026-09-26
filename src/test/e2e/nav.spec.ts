@@ -20,7 +20,7 @@ test.describe("desktop", () => {
       "PROJECTS",
       "LEADERSHIP",
       "HIGHLIGHTS",
-      "MY NETWORK",
+      "NETWORK",
     ];
     const seen: string[] = [];
     for (let i = 0; i < expected.length; i++) {
@@ -89,7 +89,7 @@ test.describe("phone menu", () => {
 });
 
 test.describe("frame", () => {
-  for (const path of ["/", "/work", "/projects", "/leadership", "/highlights", "/network"]) {
+  for (const path of ["/", "/work", "/projects", "/leadership", "/highlights"]) {
     test(`${path} renders inside the frame`, async ({ page }) => {
       await page.goto(path);
       await expect(page.locator("header.site-header")).toBeVisible();
@@ -117,4 +117,59 @@ test("no resume link anywhere; Request my resume opens a prefilled email", async
       "mailto:anand.me@northeastern.edu?subject=Resume%20request",
     );
   }
+});
+
+test.describe("NETWORK (the Tower, proxied at /network)", () => {
+  // Stand in for the Tower app: in production Vercel rewrites /network to it.
+  const stubTower = (page: import("@playwright/test").Page) =>
+    page.route("**/network", (route) =>
+      route.fulfill({ contentType: "text/html", body: "<title>Tower stub</title><h1>TOWER</h1>" }),
+    );
+
+  const expectPlainAnchor = async (link: import("@playwright/test").Locator) => {
+    await expect(link).toHaveAttribute("href", "/network");
+    // React Router's <Link>/<NavLink> add data-discover; a plain anchor does not.
+    await expect(link).not.toHaveAttribute("data-discover", /.*/);
+  };
+
+  /** Clicking must be a full page load: a marker on window must not survive. */
+  const expectFullPageLoad = async (
+    page: import("@playwright/test").Page,
+    click: () => Promise<void>,
+  ) => {
+    await page.evaluate(() => ((window as unknown as { __spa: boolean }).__spa = true));
+    await click();
+    await expect(page).toHaveURL(/\/network$/);
+    await expect(page.locator("h1")).toHaveText("TOWER");
+    expect(
+      await page.evaluate(() => (window as unknown as { __spa?: boolean }).__spa),
+    ).toBeUndefined();
+  };
+
+  test("header link is a plain anchor that fully reloads", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await stubTower(page);
+    await page.goto("/");
+    const link = page.locator(".site-nav").getByRole("link", { name: "NETWORK", exact: true });
+    await expectPlainAnchor(link);
+    await expectFullPageLoad(page, () => link.click());
+  });
+
+  test("footer link is a plain anchor that fully reloads", async ({ page }) => {
+    await stubTower(page);
+    await page.goto("/");
+    const link = page.locator("footer").getByRole("link", { name: "NETWORK", exact: true });
+    await expectPlainAnchor(link);
+    await expectFullPageLoad(page, () => link.click());
+  });
+
+  test("phone menu link is a plain anchor that fully reloads", async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 740 });
+    await stubTower(page);
+    await page.goto("/");
+    await page.getByRole("button", { name: "Menu" }).click();
+    const link = page.getByRole("dialog").getByRole("link", { name: "NETWORK", exact: true });
+    await expectPlainAnchor(link);
+    await expectFullPageLoad(page, () => link.click());
+  });
 });

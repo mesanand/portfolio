@@ -124,11 +124,17 @@ function MenuOverlay({ onClose }: MenuOverlayProps) {
           initial="hidden"
           animate="show"
         >
-          {NAV_ITEMS.map(({ label, to }) => (
+          {NAV_ITEMS.map(({ label, to, external }) => (
             <motion.li key={to} variants={item}>
-              <NavLink to={to} className="menu-overlay__link" onClick={onClose}>
-                {label}
-              </NavLink>
+              {external ? (
+                <a href={to} className="menu-overlay__link">
+                  {label}
+                </a>
+              ) : (
+                <NavLink to={to} className="menu-overlay__link" onClick={onClose}>
+                  {label}
+                </NavLink>
+              )}
             </motion.li>
           ))}
         </motion.ul>
@@ -154,11 +160,17 @@ export default function Header() {
         <Wordmark />
         <nav className="site-nav" aria-label="Primary">
           <ul className="site-nav__list" role="list">
-            {NAV_ITEMS.map(({ label, to }) => (
+            {NAV_ITEMS.map(({ label, to, external }) => (
               <li key={to}>
-                <NavLink to={to} className="nav-link">
-                  {label}
-                </NavLink>
+                {external ? (
+                  <a href={to} className="nav-link">
+                    {label}
+                  </a>
+                ) : (
+                  <NavLink to={to} className="nav-link">
+                    {label}
+                  </NavLink>
+                )}
               </li>
             ))}
           </ul>
