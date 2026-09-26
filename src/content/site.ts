@@ -70,7 +70,7 @@ export const site: Site = {
     },
   ],
   about:
-    "Rising senior at Northeastern's Khoury College, BS Computer Science with an AI concentration and a math minor, Class of 2027. Right now I'm a Data Warehouse Management Engineer co-op at General Atlantic in New York, building ETL pipelines on Azure and Databricks and wiring financial systems into AI tools with MCP. Before that I did the same for an ambulance company. I've founded clubs on two campuses and currently advise the Claude Builders Club, Northeastern's official Anthropic chapter.",
+    "I'm a Northeastern senior in Computer Science and AI, currently a data engineering co-op at General Atlantic in New York after an ML co-op at Brewster Ambulance. I'm looking for full-time roles at the intersection of finance or healthcare and applied AI, where technical depth meets business judgment: between growth/private equity, bioinformatics / EMS and the firms building or deploying AI in those markets.",
   metaDescription:
     "Mehr Anand is a data engineer and applied AI builder at Northeastern University (CS + AI, '27), currently a co-op at General Atlantic in New York. Founder of the Claude Builders Club.",
   footerTagline: "Built with Vite, React, and a lot of Geist Mono.",

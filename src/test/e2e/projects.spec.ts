@@ -32,9 +32,18 @@ test("filter buttons are keyboard-operable and announce state", async ({ page })
   await expect(page.locator(".cells .cell")).toHaveCount(3);
 });
 
-test("Home has no projects section; the Projects page and nav link remain", async ({ page }) => {
+test("Home shows Chordly and Inquisiv only; Chordly links its report PDF", async ({ page }) => {
   await page.goto("/");
-  await expect(page.locator("#projects")).toHaveCount(0);
+  const cells = page.locator("#projects .cell");
+  await expect(cells).toHaveCount(2);
+  await expect(cells.nth(0)).toContainText("Chordly");
+  await expect(cells.nth(1)).toContainText("Inquisiv");
+  const report = cells.nth(0).getByRole("link", { name: /Report: Chordly/ });
+  await expect(report).toHaveAttribute("href", "/projects/chordly-executive-summary.pdf");
+  await expect(report).toHaveAttribute("target", "_blank");
+  const pdf = await page.request.get("/projects/chordly-executive-summary.pdf");
+  expect(pdf.status()).toBe(200);
+  expect(pdf.headers()["content-type"]).toContain("application/pdf");
   await expect(page.locator(".site-nav").getByRole("link", { name: "PROJECTS" })).toHaveAttribute(
     "href",
     "/projects",

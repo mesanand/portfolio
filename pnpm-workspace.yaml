@@ -1,3 +1,7 @@
 allowBuilds:
   esbuild: true
   sharp: true
+
+# Force the patched sharp everywhere (vite-imagetools pins an older one). Advisories fixed in 0.35.4.
+overrides:
+  sharp: ^0.35.4

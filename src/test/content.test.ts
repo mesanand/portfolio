@@ -16,7 +16,8 @@ const collections = {
 
 /** Every string value anywhere in an object whose key suggests a URL. */
 function urlsIn(value: unknown, key = ""): string[] {
-  if (typeof value === "string") return /url|repo|demo|devpost|video/i.test(key) ? [value] : [];
+  if (typeof value === "string")
+    return /^(url|orgUrl|repo|demo|devpost|video)$/.test(key) ? [value] : [];
   if (Array.isArray(value)) return value.flatMap((v) => urlsIn(v, key));
   if (value && typeof value === "object")
     return Object.entries(value).flatMap(([k, v]) => urlsIn(v, k));
@@ -67,6 +68,11 @@ describe("content", () => {
         }
       }
     }
+  });
+
+  it("every project report file exists in public/", () => {
+    for (const p of content.projects)
+      if (p.links.report) expect(existsSync(`public${p.links.report}`), p.links.report).toBe(true);
   });
 
   it("every referenced photo exists", () => {

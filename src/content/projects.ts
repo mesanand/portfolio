@@ -1,6 +1,6 @@
 // Projects. Source: docs/overhaul/07-ANSWERS.md section 3
 // (overrides 04-CONTENT-INVENTORY.md section 3).
-// At most three `featured: true`; those show on Home.
+// `featured: true` shows on Home (Mehr: Chordly and Inquisiv only).
 // CUT per 07: Backyard, bitsdime, Simple-Quiz-Game, Ask Vida.
 import type { ProjectInput } from "./schemas";
 
@@ -17,8 +17,10 @@ export const projects: ProjectInput[] = [
     links: {
       repo: "https://github.com/Sadfahlsdj/CS4100-Project",
       video: "https://youtu.be/r7bYgrsZ570",
+      report: "/projects/chordly-executive-summary.pdf",
     },
     outcome: "CS 4100 (Artificial Intelligence) final project. Project manager for a team of four.",
+    featured: true,
   },
   {
     id: "inquisiv",
@@ -60,7 +62,6 @@ export const projects: ProjectInput[] = [
       devpost: "https://devpost.com/software/trackntrip",
     },
     outcome: "Built at HackBeanPot 2025.",
-    featured: true,
   },
   {
     id: "campus-nutrition-assistant",
@@ -76,7 +77,6 @@ export const projects: ProjectInput[] = [
       devpost: "https://devpost.com/software/campus-nutrition-assistant",
     },
     outcome: "Honorable Mention, Student Food Insecurity track, WaffleHacks 2024.",
-    featured: true,
   },
   {
     id: "cosint",

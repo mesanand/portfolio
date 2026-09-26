@@ -6,6 +6,7 @@ import type { Project } from "@/content/schemas";
 
 const LINK_ORDER = [
   ["repo", "Code"],
+  ["report", "Report"],
   ["demo", "Live"],
   ["devpost", "Devpost"],
   ["video", "Video"],
@@ -25,7 +26,7 @@ export default function ProjectCell({ project, index, headingLevel = 3 }: Projec
   const links = LINK_ORDER.flatMap(([key, label]) => {
     const href = project.links[key];
     return href ? [{ href, label }] : [];
-  }).slice(0, 2);
+  }).slice(0, 3);
 
   const facts: Fact[] = [
     { key: "Built", value: project.year },
@@ -73,6 +74,7 @@ export default function ProjectCell({ project, index, headingLevel = 3 }: Projec
               <BracketButton
                 key={l.href}
                 href={l.href}
+                newTab
                 size="sm"
                 aria-label={`${l.label}: ${project.name} (opens in a new tab)`}
               >

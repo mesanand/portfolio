@@ -34,6 +34,11 @@ export const Project = z.object({
     demo: z.string().url().optional(),
     devpost: z.string().url().optional(),
     video: z.string().url().optional(),
+    // A write-up hosted on this site (public/...), e.g. "/projects/chordly-executive-summary.pdf".
+    report: z
+      .string()
+      .regex(/^\/[\w./-]+\.pdf$/)
+      .optional(),
   }),
   outcome: z.string().max(140).optional(), // "Won 2 tracks at FinHacks"
   image: z.string().optional(), // path under src/assets
